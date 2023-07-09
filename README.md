@@ -1,7 +1,7 @@
 # Queryable
 The open source version of Queryable, an iOS app the CLIP model on iOS to search the `Photos` album offline.
 
-Unlike the search function in the iPhone's default photo gallery, which relies on keywords, you can use natural sentences like "a dog chasing a balloon on the lawn" for searching in Queryable.
+Unlike the object recognition-based search feature built into the iOS gallery, Queryable allows you to use natural language statements, such as `a brown dog sitting on a bench`, to search your gallery. It operates offline, ensuring that your album privacy won't be leaked to anyone, including Apple/Google.
 
 [Website](https://queryable.app/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
 
