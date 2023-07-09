@@ -14,7 +14,9 @@ When you input a new text query, the text will first pass through the Text Encod
 For more details, please refer to my article [Run CLIP on iPhone to Search Photos](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/).
 
 ## Performance
-https://github.com/mazzzystar/Queryable/assets/6824141/b2e7f145-61fd-4221-bbb6-81676858cc3e
+https://github.com/mazzzystar/Queryable/assets/6824141/4f3611a3-4fa6-4a06-8079-57d82e4c8bdd
+
+
 
 
 
