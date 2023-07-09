@@ -5,6 +5,9 @@ Unlike the search function in the iPhone's default photo gallery, which relies o
 
 [Website](https://queryable.app/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
 
+## Performance
+https://github.com/mazzzystar/Queryable/assets/6824141/4f3611a3-4fa6-4a06-8079-57d82e4c8bdd
+
 ## How does it work?
 First, all photos in your album will be processed one by one through the CLIP Image Encoder, obtaining a set of local image vector.
 When you input a new text query, the text will first pass through the Text Encoder to obtain a text vector, and this will then be compared with the stored image vectors for similarity, one by one. Finally, the top K most similar results are sorted and returned. The process is as follows:
@@ -12,12 +15,6 @@ When you input a new text query, the text will first pass through the Text Encod
 ![](https://mazzzystar.github.io/images/2022-12-28/Queryable-flow-chart.jpg)
 
 For more details, please refer to my article [Run CLIP on iPhone to Search Photos](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/).
-
-## Performance
-https://github.com/mazzzystar/Queryable/assets/6824141/4f3611a3-4fa6-4a06-8079-57d82e4c8bdd
-
-
-
 
 
 ## Run on Xcode
