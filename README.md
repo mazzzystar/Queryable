@@ -21,6 +21,6 @@ https://github.com/mazzzystar/Queryable/assets/6824141/b2e7f145-61fd-4221-bbb6-8
 ## Run on Xcode
 Download the `ImageEncoder_float32.mlmodelc` and `TextEncoder_float32.mlmodelc` from [Google Drive](https://drive.google.com/drive/folders/12ze3UcqrXt9qeySGh_j_zWE-PWRDTzJv?usp=drive_link).
 
-Clone this repo, replace the two models inside `CoreMLModels/` path to your downloaded model, it should work.
+Clone this repo, put the downloaded models below `CoreMLModels/` path and run Xcode, it should work.
 
 
