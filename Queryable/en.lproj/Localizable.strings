@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  Queryable
+
+  Created by Mazzystar on 2023/03/08.
+  
+*/
+
+"Cheers" = "Cheers";
+"My love" = "My love";
+"Dark night room with a lamp" = "Dark night room with a lamp";
+"Snow outside the window" = "Snow outside the window";
+"Deep blue" = "Deep blue";
+"Cute kitten" = "Cute kitten";
+"Photos of our gathering" = "Photos of our gathering";
+"Beach, waves, sunset" = "Beach, waves, sunset";
+"In car view, car on the road" = "In car view, car on the road";
+"Screen display of traffic info" = "Screen display of traffic info";
+"Selfie in front of mirror" = "Selfie in front of mirror";
+
+"Searching..." = "Searching...";
+"Scroll down for more results" = "Scroll down for more results";
+"Finding similar photos..." = "Finding similar photos...";
+"This photo is in iCloud.\nFor privacy, Queryable is designed to run offline. If you don't want it to have network access, you can find this photo in the album by date." = "This photo is in iCloud.\nFor privacy, Queryable is designed to run offline. If you don't want it to have network access, you can find this photo in the album by date.";
+"This photo is stored locally." = "This photo is stored locally.";
+"Allow access to wireless data to download photo from iCloud. If you have privacy concerns, you can still use Queryable offline." = "Allow access to wireless data to download photo from iCloud. If you have privacy concerns, you can still use Queryable offline.";
+"After authorization is complete, please exit the app and restart it." = "After authorization is complete, please exit the app and restart it.";
+
+
+"Loading Model..." = "Loading Model...";
+"Sorry, Queryable does not support iPhone X/Xr/Xs, please request a refund." = "Sorry, Queryable does not support iPhone X/Xr/Xs, please request a refund.";
+"Index your photos!" = "Index your photos!";
+"Photos must be indexed to be queryable." = "Photos must be indexed to be queryable.";
+"Queryable is an offline application. It runs smoothly without a network." = "Queryable is an offline application. It runs smoothly without a network.";
+"The task is performed only once. It could take a few minutes, as it will index all your photos." = "The task is performed only once. It could take a few minutes, as it will index all your photos.";
+"You may need to manually update the index when you have new photos." = "You may need to manually update the index when you have new photos.";
+"Get Started" = "Get Started";
+"Update index for new photos" = "Update index for new photos";
+
+
+"Loading Photos..." = "Loading Photos...";
+"Total" = "Total";
+"Photos need to be indexed." = "Photos need to be indexed.";
+"* Please turn off Low Power Mode when build index." = "* Please turn off Low Power Mode when build index.";
+"Index Photos" = "Index Photos";
+"Photos have been indexed." = "Photos have been indexed.";
+"Task runs entirely locally. Do not operate until completed." = "Task runs entirely locally. Do not operate until completed.";
+"Build Finished." = "Build Finished.";
+"Start Search" = "Start Search";
+
+
+"Swipe up to search with this photo" = "Swipe up to search with this photo";
+"Swipe down to remove view below" = "Swipe down to remove view below";
+"User Guide and Feedback" = "User Guide and Feedback";
+"About Queryable" = "About Queryable";
+"Queryable is a large language model (**LLMs**) that runs entirely locally. Thanks to its powerful understanding of images and text, you can easily find a particular photo from albums using any textual description related to the content of the photo, just like finding a needle in a haystack.\n\nUnlike other apps, Queryable supports complex, long descriptions: more precise descriptions yield more reliable results.\n\nQueryable supports English, French, German, Spanish and Italian input, but English works best." = "Queryable is a large language model (**LLMs**) that runs entirely locally. Thanks to its powerful understanding of images and text, you can easily find a particular photo from albums using any textual description related to the content of the photo, just like finding a needle in a haystack.\n\nUnlike other apps, Queryable supports complex, long descriptions: more precise descriptions yield more reliable results.\n\nQueryable supports English, French, German, Spanish and Italian input, but English works best.";
+"Album Privacy Concerns" = "Album Privacy Concerns";
+"Queryable cares about your album privacy. \n\nThis is not just a promise: Queryable avoids all situations that require network connection and you can even run it smoothly under **flight mode**.\n\nYou will find that it **does not request your network permission**, and thus it is impossible to upload your album data to anywhere outside your phone.\n\nIn the latest version of Queryable, users are allowed to download iCloud photos. When the photo stored in iCloud and you click the download button, will the network request pop up. You can still refuse and run smoothly.\n\nSome specific compromises made because of offline:\n- Models are built into the app rather than downloaded online.\n- Paid instead of free + in-app purchase, the latter requires network.\n- Photos do not show location information, as this requires network.\n- The design of \"Review the App\" below.\n- ...\n\nThe creator of Queryable values privacy as much as you do." = "Queryable cares about your album privacy. \n\nThis is not just a promise: Queryable avoids all situations that require network connection and you can even run it smoothly under **flight mode**.\n\nYou will find that it **does not request your network permission**, and thus it is impossible to upload your album data to anywhere outside your phone.\n\nIn the latest version of Queryable, users are allowed to download iCloud photos. When the photo stored in iCloud and you click the download button, will the network request pop up. You can still refuse and run smoothly.\n\nSome specific compromises made because of offline:\n- Models are built into the app rather than downloaded online.\n- Paid instead of free + in-app purchase, the latter requires network.\n- Photos do not show location information, as this requires network.\n- The design of \"Review the App\" below.\n- ...\n\nThe creator of Queryable values privacy as much as you do.";
+"Crashs & Feedback" = "Crashs & Feedback";
+"Queryable runs on the latest Core ML framework, some devices may experience crashes or abnormal search results.\n\nKnown unsupported devices include: iPhone X/Xs, as well as iPads older than the **A13** chip.\n\nIf your device is unsupported, please request a refund. We apologize for wasting your time and we are working hard to try to fix the issue.\n\nIf your device meets the requirements but still crashes, try the following:\n- Kill apps with high memory usage.\n- Turn off low power mode and try again.\n\nIf crashes still occur or if you have any suggestions, please contact me via:" = "Queryable runs on the latest Core ML framework, some devices may experience crashes or abnormal search results.\n\nKnown unsupported devices include: iPhone X/Xs, as well as iPads older than the **A13** chip.\n\nIf your device is unsupported, please request a refund. We apologize for wasting your time and we are working hard to try to fix the issue.\n\nIf your device meets the requirements but still crashes, try the following:\n- Kill apps with high memory usage.\n- Turn off low power mode and try again.\n\nIf crashes still occur or if you have any suggestions, please contact me via:";
+"Review the App" = "Review the App";
+"More App by This Developer" = "More App by This Developer";
+
+
+"Dolores: Your Virtual Friend" = "Dolores: Your Virtual Friend";
+"MemeSearch: Reddit Meme Finder" = "MemeSearch: Reddit Meme Finder";
+"Whisper Notes: Offline Transcription" = "Whisper Notes: Offline Transcription";
+"Display number of results" = "Display number of results";
+"Whisper Notes: Text to Speech" = "Whisper Notes: Text to Speech";

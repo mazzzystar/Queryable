@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  Queryable
+
+  Created by Mazzystar on 2023/03/08.
+  
+*/
+
+"Cheers" = "Prost";
+"My love" = "Meine Liebe";
+"Dark night room with a lamp" = "Dunkles Zimmer in der Nacht mit einer Lampe";
+"Snow outside the window" = "Schnee vor dem Fenster";
+"Deep blue" = "Tiefblau";
+"Cute kitten" = "Süßes Kätzchen";
+"Photos of our gathering" = "Fotos von unserem Treffen";
+"Beach, waves, sunset" = "Strand, Wellen, Sonnenuntergang";
+"In car view, car on the road" = "Blick auf das Auto, das auf der Straße fährt";
+"Screen display of traffic info" = "Bildschirmanzeige von Verkehrsinformationen";
+"Selfie in front of mirror" = "Selfie vor dem Spiegel";
+
+"Searching..." = "Suche...";
+"Scroll down for more results" = "Für weitere Ergebnisse nach unten scrollen";
+"Finding similar photos..." = "Ähnliche Fotos werden gesucht...";
+"This photo is in iCloud.\nFor privacy, Queryable is designed to run offline. If you don't want it to have network access, you can find this photo in the album by date." = "Dieses Foto befindet sich in iCloud. Zur Wahrung der Privatsphäre wurde Queryable offline erstellt. Wenn Sie keine Netzwerkverbindung wünschen, können Sie dieses Foto im Album nach Datum finden.";
+"This photo is stored locally." = "Dieses Foto ist lokal gespeichert.";
+"Allow access to wireless data to download photo from iCloud. If you have privacy concerns, you can still use Queryable offline." = "Zugriff auf Drahtlosdaten gestatten, um Fotos aus iCloud herunterzuladen. Wenn Sie Datenschutzbedenken haben, können Sie Queryable immer noch offline verwenden.";
+"After authorization is complete, please exit the app and restart it." = "Nach Abschluss der Autorisierung die App bitte verlassen und neu starten.";
+
+"Loading Model..." = "Modell wird geladen...";
+"Sorry, Queryable does not support iPhone X/Xr/Xs, please request a refund." = "Entschuldigung, Queryable unterstützt kein iPhone X/Xr/Xs, bitte fordern Sie eine Rückerstattung an.";
+"Index your photos!" = "Indizieren Sie Ihre Fotos!";
+"Photos must be indexed to be queryable." = "Fotos müssen indiziert sein, um abfragbar zu sein.";
+"Queryable is an offline application. It runs smoothly without a network." = "Queryable ist eine Offline-Anwendung. Sie läuft reibungslos ohne Netzwerk.";
+"The task is performed only once. It could take a few minutes, as it will index all your photos." = "Die Aufgabe wird nur einmal ausgeführt. Sie kann einige Minuten dauern.";
+"You may need to manually update the index when you have new photos." = "Es kann erforderlich sein, den Index manuell zu aktualisieren, wenn Sie neue Fotos haben.";
+"Get Started" = "Loslegen";
+"Update index for new photos" = "Index für neue Fotos aktualisieren";
+
+"Loading Photos..." = "Fotos werden geladen...";
+"Total" = "Insgesamt";
+"Photos need to be indexed." = "Fotos müssen indiziert werden.";
+"* Please turn off Low Power Mode when build index." = "* Bitte schalten Sie den Energiesparmodus beim Erstellen des Indexes aus.";
+"Index Photos" = "Start";
+"Photos have been indexed." = "Fotos wurden indiziert.";
+"Task runs entirely locally. Do not operate until completed." = "Aufgabe lokal ausführen, warten auf Abschluss.";
+"Build Finished." = "Erstellung abgeschlossen.";
+"Start Search" = "Start Suche";
+
+"Swipe up to search with this photo" = "Nach oben wischen, um ähnliche Fotos zu suchen";
+"Swipe down to remove view below" = "Nach unten wischen zum Entfernen der Ansicht";
+"User Guide and Feedback" = "Benutzerhandbuch und Feedback";
+"About Queryable" = "Über Queryable";
+"Crashs & Feedback" = "Abstürze und Rückmeldungen";
+"Album Privacy Concerns" = "Album Datenschutz";
+"Queryable is a large language model (**LLMs**) that runs entirely locally. Thanks to its powerful understanding of images and text, you can easily find a particular photo from albums using any textual description related to the content of the photo, just like finding a needle in a haystack.\n\nUnlike other apps, Queryable supports complex, long descriptions: more precise descriptions yield more reliable results.\n\nQueryable supports English, French, German, Spanish and Italian input, but English works best." = "Queryable ist ein großes Sprachmodell (**LLMs**), das vollständig lokal ausgeführt wird. Dank seiner leistungsstarken Bild- und Textverarbeitung können Sie mit diesem Modell ganz einfach ein spezielles Foto aus Ihren Alben finden, indem Sie eine beliebige textuelle Beschreibung verwenden, die mit dem Inhalt des Fotos zusammenhängt - ganz so als würden Sie eine Nadel im Heuhaufen suchen. \n\nIm Gegensatz zu anderen Apps unterstützt Queryable komplexe, ausführliche Beschreibungen. Je genauer die Beschreibung ist, desto zuverlässiger sind die Ergebnisse.\n\nQueryable unterstützt Englisch, Französisch, Deutsch, Spanisch und Italienisch als Eingabesprache. Am besten funktioniert es jedoch auf Englisch.";
+"Queryable cares about your album privacy. \n\nThis is not just a promise: Queryable avoids all situations that require network connection and you can even run it smoothly under **flight mode**.\n\nYou will find that it **does not request your network permission**, and thus it is impossible to upload your album data to anywhere outside your phone.\n\nIn the latest version of Queryable, users are allowed to download iCloud photos. When the photo stored in iCloud and you click the download button, will the network request pop up. You can still refuse and run smoothly.\n\nSome specific compromises made because of offline:\n- Models are built into the app rather than downloaded online.\n- Paid instead of free + in-app purchase, the latter requires network.\n- Photos do not show location information, as this requires network.\n- The design of \"Review the App\" below.\n- ...\n\nThe creator of Queryable values privacy as much as you do." = "Queryable legt großen Wert auf die Privatsphäre Ihres Albums.\n\nDies ist kein leeres Versprechen: Queryable vermeidet alle Situationen, die eine Netzwerkverbindung erfordern, und Sie können es sogar reibungslos im Flugmodus ausführen.\n\nSie werden feststellen, dass es nicht um Netzwerkerlaubnis bittet, und somit ist es unmöglich, Ihre Albumdaten an einen Ort außerhalb Ihres Telefons hochzuladen.\n\nIn der neuesten Version von Queryable können Benutzer iCloud-Fotos herunterladen. Wenn das Foto in iCloud gespeichert ist und Sie auf die Schaltfläche \"Download\" klicken, erscheint eine Netzwerkanfrage. Sie können jedoch immer noch ablehnen und reibungslos fortfahren.\n\nAufgrund der Offline-Funktionen wurden einige spezifische Kompromisse eingegangen:\n- Modelle sind in der App eingebettet und werden nicht online heruntergeladen.\n- Bezahlt statt kostenlos + In-App-Kauf, letzteres erfordert ein Netzwerk.\n- Fotos zeigen keine Standortinformationen an, da dies eine Netzwerkverbindung erfordert.\n- Das Design von \"Bewerten Sie die App\" unten.\n- ...\n\nDer Schöpfer von Queryable schätzt Ihre Privatsphäre genauso wie Sie.";
+"Queryable runs on the latest Core ML framework, some devices may experience crashes or abnormal search results.\n\nKnown unsupported devices include: iPhone X/Xs, as well as iPads older than the **A13** chip.\n\nIf your device is unsupported, please request a refund. We apologize for wasting your time and we are working hard to try to fix the issue.\n\nIf your device meets the requirements but still crashes, try the following:\n- Kill apps with high memory usage.\n- Turn off low power mode and try again.\n\nIf crashes still occur or if you have any suggestions, please contact me via:" = "Queryable arbeitet auf dem neuesten Core ML Framework und einige Geräte können Abstürze oder ungewöhnliche Suchergebnisse erleben.\n\nBekannte nicht unterstützte Geräte sind: iPhone X/Xs sowie iPads älter als der **A13** Chip.\n\nWenn Ihr Gerät nicht unterstützt wird, fordern Sie bitte eine Rückerstattung an. Wir entschuldigen uns dafür, dass wir Ihre Zeit verschwendet haben, und wir arbeiten hart daran, das Problem zu lösen.\n\nWenn Ihr Gerät die Anforderungen erfüllt, aber dennoch abstürzt, versuchen Sie Folgendes:\n- Beenden von Apps mit hohem Speicherbedarf.\n- Schalten Sie den Energiesparmodus aus und versuchen Sie es erneut.\n\nWenn Abstürze weiterhin auftreten oder wenn Sie Vorschläge haben, kontaktieren Sie uns bitte unter: ";
+"Review the App" = "Bewerten Sie die App";
+"More App by This Developer" = "Weitere Apps dieses Entwicklers";
+
+"Dolores: Your Virtual Friend" = "Dolores: Ihr Virtueller Freund";
+"MemeSearch: Reddit Meme Finder" = "MemeSearch: Reddit Meme Finder";
+"Whisper Notes: Offline Transcription" = "Whisper Notes: Offline-Transkription";
+"Display number of results" = "Anzahl der Ergebnisse anzeigen";
+"Whisper Notes: Text to Speech" = "Whisper Notes: Text zur Sprache";
