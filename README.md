@@ -9,8 +9,12 @@ Unlike the object recognition-based search feature built into the iOS gallery, Q
 https://github.com/mazzzystar/Queryable/assets/6824141/4f3611a3-4fa6-4a06-8079-57d82e4c8bdd
 
 ## How does it work?
-First, all photos in your album will be processed one by one through the CLIP Image Encoder, obtaining a set of local image vector.
-When you input a new text query, the text will first pass through the Text Encoder to obtain a text vector, and this will then be compared with the stored image vectors for similarity, one by one. Finally, the top K most similar results are sorted and returned. The process is as follows:
+* Process all photos in your album through the CLIP Image Encoder to create a set of local image vectors.
+* When a new text query is inputted, convert the text into a text vector using the Text Encoder.
+* Compare the text vector with all the stored image vectors, evaluating the level of similarity between the text query and each image.
+* Sort and return the top K most similar results.
+
+The process is as follows:
 
 ![](https://mazzzystar.github.io/images/2022-12-28/Queryable-flow-chart.jpg)
 
