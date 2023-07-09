@@ -1,5 +1,5 @@
 # Queryable
-The open source version of Queryable, an iOS app the CLIP model on iOS to search the `Photos` album offline.
+The open-source code of Queryable, an iOS app, utilizes the CLIP model to conduct offline searches in the `Photos` album.
 
 Unlike the object recognition-based search feature built into the iOS gallery, Queryable allows you to use natural language statements, such as `a brown dog sitting on a bench`, to search your gallery. It operates offline, ensuring that your album privacy won't be leaked to anyone, including Apple/Google.
 
