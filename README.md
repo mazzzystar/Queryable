@@ -23,4 +23,13 @@ Download the `ImageEncoder_float32.mlmodelc` and `TextEncoder_float32.mlmodelc` 
 
 Clone this repo, put the downloaded models below `CoreMLModels/` path and run Xcode, it should work.
 
+## Contributions
+You can apply Queryable to your own business product, but I don't recommend modifying the appearance directly and then listing it on the App Store. You can contribute to this product by submitting commits to this repo, PRs are welcome.
 
+If you have any questions/suggestions, here are some contact methods: [Discord](https://discord.com/invite/R3wNsqq3v5) | [Twitter](https://twitter.com/immazzystar) | [Reddit: r/Queryable](https://www.reddit.com/r/Queryable/).
+
+
+## License
+MIT License
+
+Copyright (c) 2023 Ke Fang
