@@ -27,7 +27,9 @@ Download the `ImageEncoder_float32.mlmodelc` and `TextEncoder_float32.mlmodelc` 
 Clone this repo, put the downloaded models below `CoreMLModels/` path and run Xcode, it should work.
 
 ## Contributions
-You can apply Queryable to your own business product, but I don't recommend modifying the appearance directly and then listing it on the App Store. You can contribute to this product by submitting commits to this repo, PRs are welcome.
+> Disclaimer: I am not an iOS engineer, please forgive my poor Swift code. You can just focus on the parts about model loading, computation, and sorting.
+
+You can apply Queryable to your own business product, but I don't recommend modifying the appearance directly and then listing it on the App Store. If you are interested in optimizing certain aspects, feel free to submit a PR.
 
 If you have any questions/suggestions, here are some contact methods: [Discord](https://discord.com/invite/R3wNsqq3v5) | [Twitter](https://twitter.com/immazzystar) | [Reddit: r/Queryable](https://www.reddit.com/r/Queryable/).
 
