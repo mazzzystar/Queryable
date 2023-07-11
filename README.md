@@ -26,6 +26,9 @@ Download the `ImageEncoder_float32.mlmodelc` and `TextEncoder_float32.mlmodelc` 
 
 Clone this repo, put the downloaded models below `CoreMLModels/` path and run Xcode, it should work.
 
+## How to Export Model
+The principle is to separate the `TextEncoder` and `ImageEncoder` at the code level, and then load the model weights individually. Queryable uses the OpenAI [ViT-B/32](https://github.com/openai/CLIP) model, and I wrote a [Jupyter notebook](https://github.com/mazzzystar/Queryable/blob/main/PyTorch2CoreML.ipynb) to demonstrate how to separate, load, and export the Core ML model. The export results of the ImageEncoder's Core ML have a certain level of precision error, and more appropriate normalization parameters may be needed.
+
 ## Contributions
 > Disclaimer: I am not a professional iOS engineer, please forgive my poor Swift code. You may focus only on the loading, computation, storage, and sorting of the model. 
 
