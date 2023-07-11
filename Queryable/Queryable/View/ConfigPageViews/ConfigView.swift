@@ -74,29 +74,6 @@ struct ConfigView: View {
                     if showCrashReportText {
                         Text("Queryable runs on the latest Core ML framework, some devices may experience crashes or abnormal search results.\n\nKnown unsupported devices include: iPhone X/Xs, as well as iPads older than the **A13** chip.\n\nIf your device is unsupported, please request a refund. We apologize for wasting your time and we are working hard to try to fix the issue.\n\nIf your device meets the requirements but still crashes, try the following:\n- Kill apps with high memory usage.\n- Turn off low power mode and try again.\n\nIf crashes still occur or if you have any suggestions, please contact me via:")
                             .foregroundColor(.gray)
-                        
-                        Button(action: {
-                           EmailHelper.shared.sendEmail(subject: "[Queryable Feedback]", body: "", to: "myfancoo@gmail.com")
-                         }) {
-                             Label("Email: myfancoo@gmail.com", systemImage: "envelope")
-                                 .foregroundColor(Color.primary)
-                         }
-                        
-//                        Link(destination: URL(string: "mailto:myfancoo@gmail.com")!, label: {
-//                              Label("myfancoo@gmail.com", systemImage: "envelope")
-//                            })
-//                        .foregroundColor(Color.primary)
-
-                        Link(destination: URL(string: "https://twitter.com/immazzystar")!, label: {
-                              Label("Twitter", systemImage: "hand.raised")
-                            })
-                        .foregroundColor(Color.primary)
-                        
-                        Link(destination: URL(string: "https://discord.com/invite/R3wNsqq3v5")!, label: {
-                              Label("Discord", systemImage: "rectangle.3.group.bubble.left")
-                            })
-                        .foregroundColor(Color.primary)
-                        
                     }
 
 
@@ -108,6 +85,23 @@ struct ConfigView: View {
                 }
 
                 Section(header: Text("Feedback")) {
+                    Link(destination: URL(string: NSLocalizedString("https://discord.com/invite/R3wNsqq3v5", comment: "Discord URL"))!, label: {
+                        
+                            HStack {
+                                Image("DiscordIcon")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 36, height: 36)
+                                    .shadow(radius: 2)
+                                
+                                Text("Discord")
+                                    .foregroundColor(.primary)
+                                Text(NSLocalizedString("discord/R3wNsqq3v5", comment: "Discord"))
+                                    .foregroundColor(.gray)
+                            }
+                        })
+                    .foregroundColor(Color.primary)
+                    
                     Link(destination: URL(string: NSLocalizedString("https://twitter.com/immazzystar", comment: "Twitter URL"))!, label: {
                         
                             HStack {
@@ -121,6 +115,24 @@ struct ConfigView: View {
                                 Text("Twitter")
                                     .foregroundColor(.primary)
                                 Text(NSLocalizedString("twitter.com/immazzystar", comment: "Twitter"))
+                                    .foregroundColor(.gray)
+                            }
+                        })
+                    .foregroundColor(Color.primary)
+                    
+                    Link(destination: URL(string: NSLocalizedString("https://github.com/mazzzystar/Queryable/issues", comment: "Twitter URL"))!, label: {
+                        
+                            HStack {
+                                Image("GitHub")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.gray, lineWidth: 0.3))
+                                
+                                Text("Github")
+                                    .foregroundColor(.primary)
+                                Text(NSLocalizedString("github/Queryable", comment: "Github"))
                                     .foregroundColor(.gray)
                             }
                         })
