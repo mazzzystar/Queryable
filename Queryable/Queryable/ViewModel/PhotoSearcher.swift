@@ -46,7 +46,6 @@ class PhotoSearcher: ObservableObject {
     @Published var totalUnIndexedPhotosNum: Int = -1
     @Published var curIndexingNums: Int = -1
     @Published var curShowingPhoto: UIImage = UIImage(systemName: "photo")!
-//    @Published var searchResultPhoto: UIImage = UIImage(systemName: "photo")!
     
     @Published var isFindingSimilarPhotos = false
     @Published var similarPhotoAssets = [PhotoAsset]()
@@ -280,7 +279,6 @@ class PhotoSearcher: ObservableObject {
         self.unIndexedPhotos = [PhotoAsset]()
         let startingTime = Date()
         
-//        for idx in 1300..<1450 {
         for idx in 0..<self.photoCollection.photoAssets.count {
             let _cur_asset = self.photoCollection.photoAssets[idx]
             
@@ -338,7 +336,10 @@ class PhotoSearcher: ObservableObject {
         
         final_all_results = [Embedding]()
     }
-    
+
+    /**
+     Build index
+     */
     func buildIndex() async {
         self.buildingEmbedding = [String: MLMultiArray]()
         
@@ -512,7 +513,7 @@ class PhotoSearcher: ObservableObject {
     
     
     /**
-     Search Part
+     Similarity ranking
      */
     func similarPhoto(with photoAsset: PhotoAsset) async {
         self.isFindingSimilarPhotos = true
