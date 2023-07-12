@@ -23,7 +23,6 @@ For more details, please refer to my article [Run CLIP on iPhone to Search Photo
 
 ## Run on Xcode
 Download the `ImageEncoder_float32.mlmodelc` and `TextEncoder_float32.mlmodelc` from [Google Drive](https://drive.google.com/drive/folders/12ze3UcqrXt9qeySGh_j_zWE-PWRDTzJv?usp=drive_link).
-
 Clone this repo, put the downloaded models below `CoreMLModels/` path and run Xcode, it should work.
 
 ## Core ML Export
@@ -34,7 +33,8 @@ The trick is to separate the `TextEncoder` and `ImageEncoder` at the architectur
 ## Contributions
 > Disclaimer: I am not a professional iOS engineer, please forgive my poor Swift code. You may focus only on the loading, computation, storage, and sorting of the model. 
 
-You can apply Queryable to your own business product, but I don't recommend modifying the appearance directly and then listing it on the App Store. If you are interested in optimizing certain aspects, feel free to submit a PR (Pull Request).
+You can apply Queryable to your own product, but I don't recommend simply modifying the appearance and listing it on the App Store. 
+If you are interested in optimizing certain aspects(such as https://github.com/mazzzystar/Queryable/issues/3, https://github.com/mazzzystar/Queryable/issues/4, https://github.com/mazzzystar/Queryable/issues/5, https://github.com/mazzzystar/Queryable/issues/6), feel free to submit a PR (Pull Request).
 
 If you have any questions/suggestions, here are some contact methods: [Discord](https://discord.com/invite/R3wNsqq3v5) | [Twitter](https://twitter.com/immazzystar) | [Reddit: r/Queryable](https://www.reddit.com/r/Queryable/).
 
