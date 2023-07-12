@@ -1,12 +1,16 @@
 # Queryable
+<a href="https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/6824141/252914927-51414112-236b-4f7a-a13b-5210f9203198.svg" alt="download-on-the-app-store">
+</a>
+
+[![Queryable](https://mazzzystar.github.io/images/2022-12-28/Queryable-search-result.jpg)](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
+
 The open-source code of Queryable, an iOS app, utilizes the CLIP model to conduct offline searches in the `Photos` album.
 
 Unlike the object recognition-based search feature built into the iOS gallery, Queryable allows you to use natural language statements, such as `a brown dog sitting on a bench`, to search your gallery. It operates offline, ensuring that your album privacy won't be leaked to anyone, including Apple/Google.
 
 [Blog](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [Website](https://queryable.app/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
 
-## Performance
-https://github.com/mazzzystar/Queryable/assets/6824141/4f3611a3-4fa6-4a06-8079-57d82e4c8bdd
 
 ## How does it work?
 * Process all photos in your album through the CLIP Image Encoder to create a set of local image vectors.
@@ -37,7 +41,6 @@ You can apply Queryable to your own product, but I don't recommend simply modify
 If you are interested in optimizing certain aspects(such as https://github.com/mazzzystar/Queryable/issues/3, https://github.com/mazzzystar/Queryable/issues/4, https://github.com/mazzzystar/Queryable/issues/5, https://github.com/mazzzystar/Queryable/issues/6), feel free to submit a PR (Pull Request).
 
 If you have any questions/suggestions, here are some contact methods: [Discord](https://discord.com/invite/R3wNsqq3v5) | [Twitter](https://twitter.com/immazzystar) | [Reddit: r/Queryable](https://www.reddit.com/r/Queryable/).
-
 
 ## License
 MIT License
