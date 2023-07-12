@@ -20,7 +20,7 @@ The process is as follows:
 
 ![](https://mazzzystar.github.io/images/2022-12-28/Queryable-flow-chart.jpg)
 
-For more details, please refer to my article [Run CLIP on iPhone to Search Photos](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/).
+For more details, please refer to my blog: [Run CLIP on iPhone to Search Photos](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/).
 
 
 ## Run on Xcode
