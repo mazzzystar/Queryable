@@ -5,9 +5,7 @@
 
 [![Queryable](https://mazzzystar.github.io/images/2022-12-28/Queryable-search-result.jpg)](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
 
-The open-source code of Queryable, an iOS app, utilizes the CLIP model to conduct offline searches in the `Photos` album.
-
-Unlike the object recognition-based search feature built into the iOS gallery, Queryable allows you to use natural language statements, such as `a brown dog sitting on a bench`, to search your gallery. It operates offline, ensuring that your album privacy won't be leaked to anyone, including Apple/Google.
+The open-source code of Queryable, an iOS app, utilizes the CLIP model to conduct offline searches in the `Photos` album. Unlike the object recognition-based search feature built into the iOS gallery, Queryable allows you to use natural language statements, such as `a brown dog sitting on a bench`, to search your gallery. It operates offline, ensuring that your album privacy won't be leaked to anyone, including Apple/Google.
 
 [Blog](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [Website](https://queryable.app/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
 
