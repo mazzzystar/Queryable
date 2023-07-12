@@ -11,10 +11,10 @@ The open-source code of Queryable, an iOS app, leverages the OpenAI's [CLIP](htt
 
 
 ## How does it work?
-* Process all photos in your album through the CLIP Image Encoder to create a set of local image vectors.
-* When a new text query is inputted, convert the text into a text vector using the Text Encoder.
-* Compare the text vector with all the stored image vectors, evaluating the level of similarity between the text query and each image.
-* Sort and return the top K most similar results.
+* Encode all album photos using the CLIP Image Encoder, compute image vectors, and save them.
+* For each new text query, compute the corresponding text vector using the Text Encoder.
+* Compare the similarity between this text vector and each image vector.
+* Rank and return the top K most similar results.
 
 The process is as follows:
 
