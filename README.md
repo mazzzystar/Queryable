@@ -36,7 +36,7 @@ The trick is to separate the `TextEncoder` and `ImageEncoder` at the architectur
 > Disclaimer: I am not a professional iOS engineer, please forgive my poor Swift code. You may focus only on the loading, computation, storage, and sorting of the model. 
 
 You can apply Queryable to your own product, but I don't recommend simply modifying the appearance and listing it on the App Store. 
-If you are interested in optimizing certain aspects(such as https://github.com/mazzzystar/Queryable/issues/3, https://github.com/mazzzystar/Queryable/issues/4, https://github.com/mazzzystar/Queryable/issues/5, https://github.com/mazzzystar/Queryable/issues/6, https://github.com/mazzzystar/Queryable/issues/10, https://github.com/mazzzystar/Queryable/issues/11), feel free to submit a PR (Pull Request).
+If you are interested in optimizing certain aspects(such as https://github.com/mazzzystar/Queryable/issues/3, https://github.com/mazzzystar/Queryable/issues/4, https://github.com/mazzzystar/Queryable/issues/5, https://github.com/mazzzystar/Queryable/issues/6, https://github.com/mazzzystar/Queryable/issues/10, https://github.com/mazzzystar/Queryable/issues/11, https://github.com/mazzzystar/Queryable/issues/12), feel free to submit a PR (Pull Request).
 
 If you have any questions/suggestions, here are some contact methods: [Discord](https://discord.com/invite/R3wNsqq3v5) | [Twitter](https://twitter.com/immazzystar) | [Reddit: r/Queryable](https://www.reddit.com/r/Queryable/).
 
