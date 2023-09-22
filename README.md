@@ -32,6 +32,8 @@ Clone this repo, put the downloaded models below `CoreMLModels/` path and run Xc
 
 The trick is to separate the `TextEncoder` and `ImageEncoder` at the architecture level, and then load the model weights individually. Queryable uses the OpenAI [ViT-B/32](https://github.com/openai/CLIP) model, and I wrote a [Jupyter notebook](https://github.com/mazzzystar/Queryable/blob/main/PyTorch2CoreML.ipynb) to demonstrate how to separate, load, and export the Core ML model. The export results of the ImageEncoder's Core ML have a certain level of precision error, and more appropriate normalization parameters may be needed.
 
+* Update (2023/09/22): Thanks to [jxiong22](https://github.com/jxiong22) for providing the [scripts](https://github.com/mazzzystar/Queryable/blob/main/PyTorch2CoreML-HuggingFace.ipynb) to convert the HuggingFace version of `clip-vit-base-patch32`. This has significantly reduced the precision error in the image encoder. For more details, see [#18](https://github.com/mazzzystar/Queryable/pull/18).
+
 ## Contributions
 > Disclaimer: I am not a professional iOS engineer, please forgive my poor Swift code. You may focus only on the loading, computation, storage, and sorting of the model. 
 
