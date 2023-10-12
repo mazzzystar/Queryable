@@ -4,6 +4,10 @@
 import Foundation
 import CoreML
 
+#if os(iOS)
+import UIKit
+#endif
+
 ///  A model for encoding text
 public struct TextEncoder {
 
@@ -20,6 +24,13 @@ public struct TextEncoder {
         let vocabURL = baseURL.appending(path: "vocab.json")
         let mergesURL = baseURL.appending(path: "merges.txt")
         
+#if os(iOS)
+        // Fallback to CPU only to avoid NN compute error on iPhone < 11 and iPad < 9th gen
+        if !UIDevice.chipIsA13OrLater() {
+            config.computeUnits = .cpuOnly
+        }
+#endif
+
         // Text tokenizer and encoder
         let tokenizer = try BPETokenizer(mergesAt: mergesURL, vocabularyAt: vocabURL)
         let textEncoderModel = try MLModel(contentsOf: textEncoderURL, configuration: config)

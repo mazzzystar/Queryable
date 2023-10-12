@@ -294,7 +294,19 @@ struct SearchResultsView_Previews: PreviewProvider {
 import UIKit
 
 public extension UIDevice {
+    static func chipIsA13OrLater() -> Bool {
+        let devicePattern = /(AppleTV|iPad|iPhone|Watch|iPod)(\d+),(\d+)/
+        
+        if let match = current.model.firstMatch(of: devicePattern) {
+            let deviceModel = match.1
+            let majorRevision = Int(match.2)!
+            
+            return (deviceModel == "iPhone" || deviceModel == "iPad") && majorRevision >= 12
+        }
 
+        return false
+    }
+    
     static let modelIsValid: Bool = {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -304,22 +316,18 @@ public extension UIDevice {
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
 
-        func isDeviceValid(identifier: String) -> Bool { // swiftlint:disable:this cyclomatic_complexity
-            #if os(iOS)
-            switch identifier {
-            case "iPhone10,3", "iPhone10,6":                      return false // "iPhone X"
-            case "iPhone11,2":                                    return false // "iPhone XS"
-            case "iPhone11,4", "iPhone11,6":                      return  false // "iPhone XS Max"
-            case "iPhone11,8":                                    return false // "iPhone XR"
-            default:                                              return true
-            }
-            #elseif os(tvOS)
+        
+        func isDeviceValid(identifier: String) -> Bool {
+            // swiftlint:disable:this cyclomatic_complexity
+            #if os(tvOS)
             switch identifier {
             case "AppleTV5,3": return false
             case "AppleTV6,2": return false
             case "i386", "x86_64": return false
             default: return false
             }
+            #elseif os(iOS)
+            return true
             #endif
         }
 
