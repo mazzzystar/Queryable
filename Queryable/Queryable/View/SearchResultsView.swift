@@ -102,27 +102,9 @@ struct FirstTimeSearchView: View {
     var body: some View {
         VStack {
             VStack {
-    
-//                Text("No results, it seems to be your first search.")
-//                    .foregroundColor(.gray)
-//                    .scaledToFill()
-//                    .minimumScaleFactor(0.5)
-//                    .lineLimit(1)
                 
-                if UIDevice.modelIsValid == true {
-                    TipsView(photoSearcher: photoSearcher)
-
-                    Spacer(minLength: 100)
-                } else {
-                    Text("Sorry, Queryable does not support iPhone X/Xr/Xs, please request a refund.")
-                        .foregroundColor(.gray)
-                    
-                    Link(destination: URL(string: "https://support.apple.com/en-us/HT204084")!, label: {
-                          Label("Go", systemImage: "network")
-                        })
-
-                    Spacer(minLength: 100)
-                }
+                TipsView(photoSearcher: photoSearcher)
+                Spacer(minLength: 100)
                 
             }
             
