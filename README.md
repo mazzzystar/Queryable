@@ -9,8 +9,12 @@ The open-source code of Queryable, an iOS app, leverages the OpenAI's [CLIP](htt
 
 [Blog](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [Website](https://queryable.app/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
 
-## [PicQuery](https://play.google.com/store/apps/details?id=me.grey.picquery)(Android)
-The Android version developed by [@greyovo](https://github.com/greyovo), which supports both English and Chinese. See details in [#12](https://github.com/mazzzystar/Queryable/issues/12).
+## [PicQuery](https://github.com/greyovo/PicQuery)(Android)
+<a href="https://play.google.com/store/apps/details?id=me.grey.picquery">
+    <img src="https://github.com/mazzzystar/Queryable/assets/6824141/69a37ae7-55b3-46b2-ad24-5368eb2734f9" alt="download-on-the-app-store" width="120">
+</a>
+
+The Android version([Code](https://github.com/greyovo/PicQuery)) developed by [@greyovo](https://github.com/greyovo), which supports both English and Chinese. See details in [#12](https://github.com/mazzzystar/Queryable/issues/12).
 
 ## How does it work?
 * Encode all album photos using the CLIP Image Encoder, compute image vectors, and save them.
