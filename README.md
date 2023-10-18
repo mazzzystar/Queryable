@@ -11,7 +11,7 @@ The open-source code of Queryable, an iOS app, leverages the OpenAI's [CLIP](htt
 
 ## [PicQuery](https://github.com/greyovo/PicQuery)(Android)
 <a href="https://play.google.com/store/apps/details?id=me.grey.picquery">
-    <img src="https://github.com/mazzzystar/Queryable/assets/6824141/69a37ae7-55b3-46b2-ad24-5368eb2734f9" alt="download-on-the-app-store" width="120">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/6824141/274861421-69a37ae7-55b3-46b2-ad24-5368eb2734f9.png" alt="download-on-the-app-store" width="120">
 </a>
 
 The Android version([Code](https://github.com/greyovo/PicQuery)) developed by [@greyovo](https://github.com/greyovo), which supports both English and Chinese. See details in [#12](https://github.com/mazzzystar/Queryable/issues/12).
