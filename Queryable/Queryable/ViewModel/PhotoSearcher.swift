@@ -41,7 +41,7 @@ class PhotoSearcher: ObservableObject {
     let KEY_HAS_ACCESS_TO_PHOTOS = "KEY_HAS_ACCESS_TO_PHOTOS"
     
     // -3: default, -2: Is searching now, -1: Never indexed. 0: No result. 1: Has result.
-    @Published var searchResultCode: Int = SEARCH_RESULT_CODE.DEFAULT.rawValue
+    @Published var searchResultCode: SEARCH_RESULT_CODE = .DEFAULT
     @Published var buildIndexCode: Int = BUILD_INDEX_CODE.DEFAULT.rawValue
     @Published var totalUnIndexedPhotosNum: Int = -1
     @Published var curIndexingNums: Int = -1
@@ -89,14 +89,14 @@ class PhotoSearcher: ObservableObject {
         clearCache()
         print("Cache cleared.")
         
-        self.searchResultCode = SEARCH_RESULT_CODE.DEFAULT.rawValue
+        self.searchResultCode = .DEFAULT
         print("Loading text encoder..")
         self.photoSearchModel.load_text_encoder()
         print("Text encoder loaded.")
         if self.loadEmbeddingsData(fileName: self.EMBEDDING_DATA_NAME) {
             print("Text embedding loaded. total \(self.savedEmbedding.count)")
         } else {
-            self.searchResultCode = SEARCH_RESULT_CODE.NEVER_INDEXED.rawValue
+            self.searchResultCode = .NEVER_INDEXED
             print("Load text embedding failure.")
         }
         
@@ -112,7 +112,7 @@ class PhotoSearcher: ObservableObject {
         }
         
         if self.savedEmbedding.count > 0 {
-            self.searchResultCode = SEARCH_RESULT_CODE.MODEL_PREPARED.rawValue
+            self.searchResultCode = .MODEL_PREPARED
         }
         
     }
@@ -435,12 +435,12 @@ class PhotoSearcher: ObservableObject {
         self.searchString = query
         self.searchResultPhotoAssets = [PhotoAsset]()
         
-        self.searchResultCode = SEARCH_RESULT_CODE.IS_SEARCHING.rawValue
+        self.searchResultCode = .IS_SEARCHING
         Task {
             do {
                 if self.savedEmbedding.count == 0 {
                     print("Never indexed.")
-                    self.searchResultCode = SEARCH_RESULT_CODE.NEVER_INDEXED.rawValue
+                    self.searchResultCode = .NEVER_INDEXED
                 } else {
                     // search from indexed result
                     print("Has indexed data, now begin to search.")
@@ -501,8 +501,7 @@ class PhotoSearcher: ObservableObject {
                     }
                     print("\(startingTime3.timeIntervalSinceNow * -1) seconds used for download top\(FINAL_TOP_K) sim images.")
                     
-                    
-                    self.searchResultCode = SEARCH_RESULT_CODE.HAS_RESULT.rawValue
+                    self.searchResultCode = .HAS_RESULT
                 }
                 
             } catch let error {

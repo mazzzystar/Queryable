@@ -15,7 +15,7 @@ struct SearchResultsViewForMac: View {
     
     var body: some View {
         switch photoSearcher.searchResultCode {
-        case SEARCH_RESULT_CODE.DEFAULT.rawValue:
+        case .DEFAULT:
             ProgressView() {
                 Text("Loading Model...")
             }
@@ -31,19 +31,19 @@ struct SearchResultsViewForMac: View {
                     }
                 }
             }
-        case SEARCH_RESULT_CODE.MODEL_PREPARED.rawValue:
+        case .MODEL_PREPARED:
             Text("")
-        case SEARCH_RESULT_CODE.IS_SEARCHING.rawValue:
+        case .IS_SEARCHING:
             // Searching...
             ProgressView() {
                 Text("Searching...")
             }
             .padding(.top, -500)
-        case SEARCH_RESULT_CODE.NEVER_INDEXED.rawValue:
+        case .NEVER_INDEXED:
             // User never searched before
             FirstTimeSearchView(photoSearcher: photoSearcher)
             
-        case SEARCH_RESULT_CODE.NO_RESULT.rawValue:
+        case .NO_RESULT:
             // Really no result
             VStack {
                 Text("No photos matched your query.")
@@ -55,7 +55,7 @@ struct SearchResultsViewForMac: View {
                 Spacer()
             }
             .padding(.top, -240)
-        case SEARCH_RESULT_CODE.HAS_RESULT.rawValue:
+        case .HAS_RESULT:
             // Has result
             VStack {
                 if photoSearcher.totalUnIndexedPhotosNum > 0 {
@@ -77,9 +77,6 @@ struct SearchResultsViewForMac: View {
                 Spacer()
             }
             .padding(.top, -260)
-            
-        default:
-            Text("")
         }
     }
     

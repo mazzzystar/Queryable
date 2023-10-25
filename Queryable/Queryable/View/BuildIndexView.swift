@@ -131,36 +131,30 @@ struct BuildFinishView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var photoSearcher: PhotoSearcher
     
+    var isDarkMode: Bool {
+        return colorScheme == .dark
+    }
+    
     var body: some View {
         VStack {
             Text("Build Finished.")
                 .accessibilityHint(Text("All photos have been indexed"))
             HStack {
-                if colorScheme == .dark {
-                    Text("Start Search")
-                        .font(.title)
-                        .padding()
-                        .frame(minWidth: 200)
-                        .foregroundColor(.black)
-                        .background(Color.white)
-                        .cornerRadius(40)
-                } else {
-                    Text("Start Search")
-                        .font(.title)
-                        .padding()
-                        .frame(minWidth: 200)
-                        .foregroundColor(.white)
-                        .background(Color.black)
-                        .cornerRadius(40)
-                }
+                Text("Start Search")
+                    .font(.title)
+                    .padding()
+                    .frame(minWidth: 200)
+                    .foregroundColor(isDarkMode ? .black : .white)
+                    .background(isDarkMode ? .white : .black)
+                    .cornerRadius(40)
             }
             .accessibilityHint(Text("All photos have been indexed, click to search"))
             .onTapGesture {
                 self.presentationMode.wrappedValue.dismiss()
-                self.photoSearcher.searchResultCode = SEARCH_RESULT_CODE.MODEL_PREPARED.rawValue
-                if !self.photoSearcher.searchString.elementsEqual("") {
+                self.photoSearcher.searchResultCode = .MODEL_PREPARED
+                if !self.photoSearcher.searchString.isEmpty {
                     Task {
-                        self.photoSearcher.searchResultCode = SEARCH_RESULT_CODE.IS_SEARCHING.rawValue
+                        self.photoSearcher.searchResultCode = .IS_SEARCHING
                         await self.photoSearcher.search(with: self.photoSearcher.searchString)
                     }
                 }
