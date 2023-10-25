@@ -105,16 +105,15 @@ class PhotoSearcher: ObservableObject {
         
         // Get the current authorization state.
         let status = PHPhotoLibrary.authorizationStatus()
-        if (status == PHAuthorizationStatus.authorized) {
+        if (status == .authorized) {
             // Access has been granted.
             defaults.set(true, forKey: self.KEY_HAS_ACCESS_TO_PHOTOS)
             print("KEY_HAS_ACCESS_TO_PHOTOS has been updated to true.")
         }
         
-        if self.savedEmbedding.count > 0 {
+        if !self.savedEmbedding.isEmpty {
             self.searchResultCode = .MODEL_PREPARED
         }
-        
     }
     
     func fetchPhotos() async {
@@ -438,7 +437,7 @@ class PhotoSearcher: ObservableObject {
         self.searchResultCode = .IS_SEARCHING
         Task {
             do {
-                if self.savedEmbedding.count == 0 {
+                if self.savedEmbedding.isEmpty {
                     print("Never indexed.")
                     self.searchResultCode = .NEVER_INDEXED
                 } else {
@@ -447,7 +446,7 @@ class PhotoSearcher: ObservableObject {
                     print("Test if I can fetch all photos: \(self.photoCollection.photoAssets.count)")
                     
                     // Filter whether Photo has been deleted.
-                    if self.allPhotosId.count > 0 {
+                    if !self.allPhotosId.isEmpty {
                         let startingTime = Date()
                         
                         var cnt = 0
@@ -583,13 +582,12 @@ class PhotoSearcher: ObservableObject {
         self.emb_sim_dict = [String: Float32]()
         try await withThrowingTaskGroup(of: Void.self) { group in
             for emb_dict in img_embs_dict_lst {
-                if emb_dict.count > 0 {
+                if !emb_dict.isEmpty {
                     group.addTask {
                         for key in emb_dict.keys {
                             let cur_img_emb = emb_dict[key]
                             await self.computeSingleEmbeddingSim(text_emb: text_emb, img_emb: cur_img_emb!, img_id: key)
-                        }
-                        
+                        } 
                     }
                 }
             }
