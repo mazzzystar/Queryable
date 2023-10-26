@@ -19,7 +19,7 @@ struct SearchResultsView: View {
     
     var body: some View {
         switch photoSearcher.searchResultCode {
-        case SEARCH_RESULT_CODE.DEFAULT.rawValue:
+        case .DEFAULT:
             ProgressView() {
                 Text("Loading Model...")
             }
@@ -35,9 +35,9 @@ struct SearchResultsView: View {
                     }
                 }
             }
-        case SEARCH_RESULT_CODE.MODEL_PREPARED.rawValue:
+        case .MODEL_PREPARED:
             Text("")
-        case SEARCH_RESULT_CODE.IS_SEARCHING.rawValue:
+        case .IS_SEARCHING:
             // Searching...
             ProgressView() {
                 Text("Searching...")
@@ -45,11 +45,11 @@ struct SearchResultsView: View {
                     .accessibilityValue(Text("Searching"))
             }
             .padding(.top, -UIScreen.main.bounds.height * 0.65)
-        case SEARCH_RESULT_CODE.NEVER_INDEXED.rawValue:
+        case .NEVER_INDEXED:
             // User never searched before
             FirstTimeSearchView(photoSearcher: photoSearcher)
             
-        case SEARCH_RESULT_CODE.NO_RESULT.rawValue:
+        case .NO_RESULT:
             // Really no result
             VStack {
                 Text("No photos matched your query.")
@@ -61,7 +61,7 @@ struct SearchResultsView: View {
                 Spacer()
             }
             .padding(.top, -UIScreen.main.bounds.height * 0.3)
-        case SEARCH_RESULT_CODE.HAS_RESULT.rawValue:
+        case .HAS_RESULT:
             // Has result
             VStack {
                 if photoSearcher.totalUnIndexedPhotosNum > 0 {
@@ -87,9 +87,6 @@ struct SearchResultsView: View {
                 Spacer()
             }
             .padding(.top, -UIScreen.main.bounds.height * 0.32)
-            
-        default:
-            Text("")
         }
     }
     

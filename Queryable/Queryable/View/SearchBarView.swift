@@ -53,7 +53,7 @@ struct TextFieldClearButton: ViewModifier {
                     action: {
                         self.text = ""
                         inputFocused.wrappedValue = true
-                        photoSearcher.searchResultCode = SEARCH_RESULT_CODE.MODEL_PREPARED.rawValue
+                        photoSearcher.searchResultCode = .MODEL_PREPARED
                     },
                     label: {
                         Image(systemName: "delete.left")

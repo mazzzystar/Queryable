@@ -41,7 +41,7 @@ class PhotoSearcher: ObservableObject {
     let KEY_HAS_ACCESS_TO_PHOTOS = "KEY_HAS_ACCESS_TO_PHOTOS"
     
     // -3: default, -2: Is searching now, -1: Never indexed. 0: No result. 1: Has result.
-    @Published var searchResultCode: Int = SEARCH_RESULT_CODE.DEFAULT.rawValue
+    @Published var searchResultCode: SEARCH_RESULT_CODE = .DEFAULT
     @Published var buildIndexCode: Int = BUILD_INDEX_CODE.DEFAULT.rawValue
     @Published var totalUnIndexedPhotosNum: Int = -1
     @Published var curIndexingNums: Int = -1
@@ -89,14 +89,14 @@ class PhotoSearcher: ObservableObject {
         clearCache()
         print("Cache cleared.")
         
-        self.searchResultCode = SEARCH_RESULT_CODE.DEFAULT.rawValue
+        self.searchResultCode = .DEFAULT
         print("Loading text encoder..")
         self.photoSearchModel.load_text_encoder()
         print("Text encoder loaded.")
         if self.loadEmbeddingsData(fileName: self.EMBEDDING_DATA_NAME) {
             print("Text embedding loaded. total \(self.savedEmbedding.count)")
         } else {
-            self.searchResultCode = SEARCH_RESULT_CODE.NEVER_INDEXED.rawValue
+            self.searchResultCode = .NEVER_INDEXED
             print("Load text embedding failure.")
         }
         
@@ -105,16 +105,15 @@ class PhotoSearcher: ObservableObject {
         
         // Get the current authorization state.
         let status = PHPhotoLibrary.authorizationStatus()
-        if (status == PHAuthorizationStatus.authorized) {
+        if (status == .authorized) {
             // Access has been granted.
             defaults.set(true, forKey: self.KEY_HAS_ACCESS_TO_PHOTOS)
             print("KEY_HAS_ACCESS_TO_PHOTOS has been updated to true.")
         }
         
-        if self.savedEmbedding.count > 0 {
-            self.searchResultCode = SEARCH_RESULT_CODE.MODEL_PREPARED.rawValue
+        if !self.savedEmbedding.isEmpty {
+            self.searchResultCode = .MODEL_PREPARED
         }
-        
     }
     
     func fetchPhotos() async {
@@ -435,19 +434,19 @@ class PhotoSearcher: ObservableObject {
         self.searchString = query
         self.searchResultPhotoAssets = [PhotoAsset]()
         
-        self.searchResultCode = SEARCH_RESULT_CODE.IS_SEARCHING.rawValue
+        self.searchResultCode = .IS_SEARCHING
         Task {
             do {
-                if self.savedEmbedding.count == 0 {
+                if self.savedEmbedding.isEmpty {
                     print("Never indexed.")
-                    self.searchResultCode = SEARCH_RESULT_CODE.NEVER_INDEXED.rawValue
+                    self.searchResultCode = .NEVER_INDEXED
                 } else {
                     // search from indexed result
                     print("Has indexed data, now begin to search.")
                     print("Test if I can fetch all photos: \(self.photoCollection.photoAssets.count)")
                     
                     // Filter whether Photo has been deleted.
-                    if self.allPhotosId.count > 0 {
+                    if !self.allPhotosId.isEmpty {
                         let startingTime = Date()
                         
                         var cnt = 0
@@ -501,8 +500,7 @@ class PhotoSearcher: ObservableObject {
                     }
                     print("\(startingTime3.timeIntervalSinceNow * -1) seconds used for download top\(FINAL_TOP_K) sim images.")
                     
-                    
-                    self.searchResultCode = SEARCH_RESULT_CODE.HAS_RESULT.rawValue
+                    self.searchResultCode = .HAS_RESULT
                 }
                 
             } catch let error {
@@ -584,13 +582,12 @@ class PhotoSearcher: ObservableObject {
         self.emb_sim_dict = [String: Float32]()
         try await withThrowingTaskGroup(of: Void.self) { group in
             for emb_dict in img_embs_dict_lst {
-                if emb_dict.count > 0 {
+                if !emb_dict.isEmpty {
                     group.addTask {
                         for key in emb_dict.keys {
                             let cur_img_emb = emb_dict[key]
                             await self.computeSingleEmbeddingSim(text_emb: text_emb, img_emb: cur_img_emb!, img_id: key)
-                        }
-                        
+                        } 
                     }
                 }
             }
