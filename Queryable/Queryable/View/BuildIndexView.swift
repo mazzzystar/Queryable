@@ -55,6 +55,10 @@ struct StartBuildView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var photoSearcher: PhotoSearcher
     
+    var isDarkMode: Bool {
+        return colorScheme == .dark
+    }
+    
     var body: some View {
         VStack {
             let start = "Total"
@@ -74,23 +78,13 @@ struct StartBuildView: View {
             }
             
             HStack {
-                if colorScheme == .dark {
-                    Text("Index Photos")
-                        .font(.title)
-                        .padding()
-                        .frame(minWidth: 200)
-                        .foregroundColor(.black)
-                        .background(Color.white)
-                        .cornerRadius(40)
-                } else {
-                    Text("Index Photos")
-                        .font(.title)
-                        .padding()
-                        .frame(minWidth: 200)
-                        .foregroundColor(.white)
-                        .background(Color.black)
-                        .cornerRadius(40)
-                }
+                Text("Index Photos")
+                    .font(.title)
+                    .padding()
+                    .frame(minWidth: 200)
+                    .foregroundColor(isDarkMode ? .black : .white)
+                    .background(isDarkMode ? .white : .black)
+                    .cornerRadius(40)
             }
             .accessibilityHint("Press button to build index for all your photos, this may takes a few minutes, depending on the number of your unindexed photos")
             .onTapGesture {
