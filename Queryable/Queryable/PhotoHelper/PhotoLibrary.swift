@@ -7,7 +7,7 @@ import os.log
 
 class PhotoLibrary {
     static func checkAuthorization(status: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)) async -> Bool {
-        switch PHPhotoLibrary.authorizationStatus(for: .readWrite) {
+        switch status {
         case .authorized:
             logger.debug("Photo library access authorized.")
             return true
