@@ -20,7 +20,7 @@ class PhotoLibrary {
             return false
         case .limited:
             logger.debug("Photo library access limited.")
-            return false
+            return true
         case .restricted:
             logger.debug("Photo library access restricted.")
             return false
