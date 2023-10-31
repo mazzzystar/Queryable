@@ -44,6 +44,8 @@
 		94E917DF2A5A47A300324937 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94E917D72A5A47A300324937 /* Localizable.strings */; };
 		94E917E02A5A47A300324937 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94E917DA2A5A47A300324937 /* Localizable.strings */; };
 		94ECA38F2A5D52060066F64B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94ECA38E2A5D52050066F64B /* Assets.xcassets */; };
+		D78D1FE52AF073F8004B45E4 /* LimitedLibraryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D1FE42AF073F8004B45E4 /* LimitedLibraryPicker.swift */; };
+		D78D1FE82AF0790F004B45E4 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78D1FE72AF0790F004B45E4 /* PhotosUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,9 @@
 		94E917D82A5A47A300324937 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Localizable.strings; sourceTree = "<group>"; };
 		94E917DB2A5A47A300324937 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		94ECA38E2A5D52050066F64B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D78D1FE42AF073F8004B45E4 /* LimitedLibraryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedLibraryPicker.swift; sourceTree = "<group>"; };
+		D78D1FE72AF0790F004B45E4 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		D78D1FE92AF0894B004B45E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D78D1FE82AF0790F004B45E4 /* PhotosUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +147,7 @@
 				94E917D62A5A47A300324937 /* it.lproj */,
 				94E917492A5A45C000324937 /* Queryable */,
 				94E917482A5A45C000324937 /* Products */,
+				D78D1FE62AF0790F004B45E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +164,7 @@
 		94E917492A5A45C000324937 /* Queryable */ = {
 			isa = PBXGroup;
 			children = (
+				D78D1FE92AF0894B004B45E4 /* Info.plist */,
 				4D3B1D632A5F95300004C06F /* CoreMLModels */,
 				94E9178C2A5A475B00324937 /* CLIP */,
 				94E917922A5A475B00324937 /* Model */,
@@ -228,6 +236,7 @@
 				94E917A42A5A475B00324937 /* ViewForMac */,
 				94E917A92A5A475B00324937 /* SearchBarView.swift */,
 				94E917AA2A5A475B00324937 /* SearchResultsView.swift */,
+				D78D1FE42AF073F8004B45E4 /* LimitedLibraryPicker.swift */,
 				94E917AB2A5A475B00324937 /* ConfigPageViews */,
 				94E917AE2A5A475B00324937 /* ContentView.swift */,
 			);
@@ -311,6 +320,14 @@
 				94E917DA2A5A47A300324937 /* Localizable.strings */,
 			);
 			path = es.lproj;
+			sourceTree = "<group>";
+		};
+		D78D1FE62AF0790F004B45E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D78D1FE72AF0790F004B45E4 /* PhotosUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,6 +498,7 @@
 				94E917C32A5A475B00324937 /* PhotoCollectionViewForMac.swift in Sources */,
 				94E917CB2A5A475B00324937 /* ContentView.swift in Sources */,
 				94E917C12A5A475B00324937 /* PhotoItemView.swift in Sources */,
+				D78D1FE52AF073F8004B45E4 /* LimitedLibraryPicker.swift in Sources */,
 				94E917C62A5A475B00324937 /* SearchResultViewForMac.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,6 +701,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Queryable/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow access to all your photos for offline search.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -714,6 +733,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Queryable/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow access to all your photos for offline search.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

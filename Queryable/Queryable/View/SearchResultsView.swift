@@ -64,7 +64,7 @@ struct SearchResultsView: View {
         case .HAS_RESULT:
             // Has result
             VStack {
-                if photoSearcher.totalUnIndexedPhotosNum > 0 {
+                if photoSearcher.totalUnIndexedPhotosNum > 0 || PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited {
                     UpdateIndexView(goToIndexView: $goToIndexView, photoSearcher: photoSearcher)
                 }
                 
@@ -248,6 +248,7 @@ struct TipsView: View {
 
 
 struct UpdateIndexView: View {
+    @State var showLimitedLibraryPicker = false
     @Binding var goToIndexView: Bool
     @ObservedObject var photoSearcher: PhotoSearcher
     
@@ -256,12 +257,22 @@ struct UpdateIndexView: View {
             .accessibilityAddTraits(.isLink)
             .accessibilityHint(Text("Click to build index for new photos to make them searchable"))
             .foregroundColor(Color.weakgreen)
+            .limitedLibraryPicker(isPresented: $showLimitedLibraryPicker)
             .onTapGesture {
-                goToIndexView = true
+                if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited {
+                    showLimitedLibraryPicker = true
+                } else {
+                    goToIndexView = true
+                }
+            }
+            .onChange(of: showLimitedLibraryPicker) { showLimitedLibraryPicker in
+                if !showLimitedLibraryPicker {
+                    Task { await photoSearcher.fetchPhotos() }
+                    goToIndexView = true
+                }
             }
     }
 }
-
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
