@@ -47,8 +47,8 @@ struct ConfigView: View {
                             .foregroundColor(.gray)
                     }
                     
-                    Label("Display number of results", systemImage: "circle.grid.2x1.right.filled")
-                        .accessibilityAddTraits(.isButton)
+
+                    Label("Number of Results", systemImage: "circle.grid.2x1.right.filled")
                         .onTapGesture {
                             withAnimation {
                                 showTOPK_SIMSlider.toggle()
@@ -67,8 +67,7 @@ struct ConfigView: View {
                             .foregroundColor(.gray)
                     }
 
-                    Label("Crashs & Feedback", systemImage: "ant")
-                        .accessibilityAddTraits(.isButton)
+                    Label("Crashes & Feedback", systemImage: "ant")
                         .onTapGesture {
                             withAnimation {
                                 showCrashReportText.toggle()
@@ -76,7 +75,7 @@ struct ConfigView: View {
                         }
 
                     if showCrashReportText {
-                        Text("Queryable runs on the latest Core ML framework, some devices may experience crashes or abnormal search results.\n\nKnown unsupported devices include: iPhone X/Xs, as well as iPads older than the **A13** chip.\n\nIf your device is unsupported, please request a refund. We apologize for wasting your time and we are working hard to try to fix the issue.\n\nIf your device meets the requirements but still crashes, try the following:\n- Kill apps with high memory usage.\n- Turn off low power mode and try again.\n\nIf crashes still occur or if you have any suggestions, please contact me via:")
+                        Text("Queryable runs on the latest Core ML framework, some devices may experience crashes or abnormal search results.\n\nIf your device meets the requirements but still crashes, try the following:\n- Kill apps with high memory usage.\n- Turn off low power mode and try again.\n\nIf crashes still occur or if you have any suggestions, please contact me via:")
                             .foregroundColor(.gray)
                     }
 
