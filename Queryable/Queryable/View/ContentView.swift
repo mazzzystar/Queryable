@@ -66,7 +66,7 @@ struct ContentView: View {
                             .labelStyle(.iconOnly)
                             .font(.title3)
                             .accessibilityLabel(Text("Config Button"))
-                            .accessibilityHint(Text("About Queryable, privacy concerns and feedback concat"))
+                            .accessibilityHint(Text("About Queryable, privacy concerns and feedback contact"))
                     }
                 }
             }
