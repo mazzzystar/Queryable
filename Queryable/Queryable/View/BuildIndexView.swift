@@ -13,16 +13,15 @@ struct BuildIndexView: View {
 
     var body: some View {
         switch photoSearcher.buildIndexCode {
-        case BUILD_INDEX_CODE.DEFAULT.rawValue:
+        case .DEFAULT:
             Text("")
-        case BUILD_INDEX_CODE.LOADING_PHOTOS.rawValue:
+        case .LOADING_PHOTOS:
             ProgressView() {
                 Text("Loading Photos...")
             }
-        case BUILD_INDEX_CODE.PHOTOS_LOADED.rawValue:
+        case .PHOTOS_LOADED:
             StartBuildView(photoSearcher: photoSearcher)
-            
-        case BUILD_INDEX_CODE.LOADING_MODEL.rawValue:
+        case .LOADING_MODEL:
             ProgressView() {
                 Text("Loading Model...")
             }
@@ -31,7 +30,7 @@ struct BuildIndexView: View {
                     await photoSearcher.loadImageIncoder()
                 }
             }
-        case BUILD_INDEX_CODE.IS_BUILDING_INDEX.rawValue:
+        case .IS_BUILDING_INDEX:
             BuildingIndexView(photoSearcher: photoSearcher)
                 .onAppear {
                     Task {
@@ -40,13 +39,11 @@ struct BuildIndexView: View {
                         UIApplication.shared.isIdleTimerDisabled = false
                     }
                 }
-        case BUILD_INDEX_CODE.BUILD_FINISHED.rawValue:
+        case .BUILD_FINISHED:
             BuildFinishView(photoSearcher: photoSearcher)
         default:
             Text("")
-            
         }
-        
     }
 }
 
@@ -89,9 +86,9 @@ struct StartBuildView: View {
             .accessibilityHint("Press button to build index for all your photos, this may takes a few minutes, depending on the number of your unindexed photos")
             .onTapGesture {
                 if photoSearcher.totalUnIndexedPhotosNum > 0 {
-                    photoSearcher.changeState(from: BUILD_INDEX_CODE.PHOTOS_LOADED.rawValue, to: BUILD_INDEX_CODE.LOADING_MODEL.rawValue)
+                    photoSearcher.changeState(from: .PHOTOS_LOADED, to: .LOADING_MODEL)
                 } else {
-                    photoSearcher.changeState(from: BUILD_INDEX_CODE.PHOTOS_LOADED.rawValue, to: BUILD_INDEX_CODE.BUILD_FINISHED.rawValue)
+                    photoSearcher.changeState(from: .PHOTOS_LOADED, to: .BUILD_FINISHED)
                 }
             }
         }

@@ -21,6 +21,7 @@ struct ConfigView: View {
             Form {
                 Section(header: Text("User Guide and Feedback")) {
                     Label("About Queryable", systemImage: "book")
+                        .accessibilityAddTraits(.isButton)
                         .onTapGesture {
                             withAnimation {
                                 showAboutText.toggle()
@@ -34,6 +35,7 @@ struct ConfigView: View {
 
 
                     Label("Album Privacy Concerns", systemImage: "photo")
+                        .accessibilityAddTraits(.isButton)
                         .onTapGesture {
                             withAnimation {
                                 showAlbumPrivacyText.toggle()
@@ -45,7 +47,8 @@ struct ConfigView: View {
                             .foregroundColor(.gray)
                     }
                     
-                    Label("Display number of results", systemImage: "circle.grid.2x1.right.filled")
+
+                    Label("Number of Results", systemImage: "circle.grid.2x1.right.filled")
                         .onTapGesture {
                             withAnimation {
                                 showTOPK_SIMSlider.toggle()
@@ -64,7 +67,7 @@ struct ConfigView: View {
                             .foregroundColor(.gray)
                     }
 
-                    Label("Crashs & Feedback", systemImage: "ant")
+                    Label("Crashes & Feedback", systemImage: "ant")
                         .onTapGesture {
                             withAnimation {
                                 showCrashReportText.toggle()
@@ -72,7 +75,7 @@ struct ConfigView: View {
                         }
 
                     if showCrashReportText {
-                        Text("Queryable runs on the latest Core ML framework, some devices may experience crashes or abnormal search results.\n\nKnown unsupported devices include: iPhone X/Xs, as well as iPads older than the **A13** chip.\n\nIf your device is unsupported, please request a refund. We apologize for wasting your time and we are working hard to try to fix the issue.\n\nIf your device meets the requirements but still crashes, try the following:\n- Kill apps with high memory usage.\n- Turn off low power mode and try again.\n\nIf crashes still occur or if you have any suggestions, please contact me via:")
+                        Text("Queryable runs on the latest Core ML framework, some devices may experience crashes or abnormal search results.\n\nIf your device meets the requirements but still crashes, try the following:\n- Kill apps with high memory usage.\n- Turn off low power mode and try again.\n\nIf crashes still occur or if you have any suggestions, please contact me via:")
                             .foregroundColor(.gray)
                     }
 
@@ -85,59 +88,11 @@ struct ConfigView: View {
                 }
 
                 Section(header: Text("Feedback")) {
-                    Link(destination: URL(string: NSLocalizedString("https://discord.com/invite/R3wNsqq3v5", comment: "Discord URL"))!, label: {
-                        
-                            HStack {
-                                Image("DiscordIcon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 36, height: 36)
-                                    .shadow(radius: 2)
-                                
-                                Text("Discord")
-                                    .foregroundColor(.primary)
-                                Text(NSLocalizedString("discord/R3wNsqq3v5", comment: "Discord"))
-                                    .foregroundColor(.gray)
-                            }
-                        })
-                    .foregroundColor(Color.primary)
+                    FeedbackItemView(title: "Discord", subtitle:NSLocalizedString("discord/R3wNsqq3v5", comment: "Discord") , logoIcon: Image("DiscordIcon"), destination: URL(string: NSLocalizedString("https://discord.com/invite/R3wNsqq3v5", comment: "Discord URL"))!)
                     
-                    Link(destination: URL(string: NSLocalizedString("https://twitter.com/immazzystar", comment: "Twitter URL"))!, label: {
-                        
-                            HStack {
-                                Image("TwitterAvatar")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
-                                    .overlay(Circle().stroke(Color.gray, lineWidth: 0.3))
-                                
-                                Text("Twitter")
-                                    .foregroundColor(.primary)
-                                Text(NSLocalizedString("twitter.com/immazzystar", comment: "Twitter"))
-                                    .foregroundColor(.gray)
-                            }
-                        })
-                    .foregroundColor(Color.primary)
-                    
-                    Link(destination: URL(string: NSLocalizedString("https://github.com/mazzzystar/Queryable/issues", comment: "Twitter URL"))!, label: {
-                        
-                            HStack {
-                                Image("GitHub")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
-                                    .overlay(Circle().stroke(Color.gray, lineWidth: 0.3))
-                                
-                                Text("Github")
-                                    .foregroundColor(.primary)
-                                Text(NSLocalizedString("github/Queryable", comment: "Github"))
-                                    .foregroundColor(.gray)
-                            }
-                        })
-                    .foregroundColor(Color.primary)
-                    
+                    FeedbackItemView(title: "Twitter", subtitle:NSLocalizedString("twitter.com/immazzystar", comment: "Twitter") , logoIcon: Image("TwitterAvatar"), destination: URL(string: NSLocalizedString("https://twitter.com/immazzystar", comment: "Twitter URL"))!)
+
+                    FeedbackItemView(title: "Github", subtitle:NSLocalizedString("github/Queryable", comment: "Github"), logoIcon: Image("GitHub"), destination: URL(string: NSLocalizedString("https://github.com/mazzzystar/Queryable/issues", comment: "Twitter URL"))!)
                 }
                 
                 Section(header: Text("More App by This Developer")) {
@@ -189,8 +144,6 @@ struct ConfigView: View {
                     })
                     .foregroundColor(Color.primary)
                 }
-                    
-
             }
         }.onAppear {
             sliderValue = Double(photoSearcher.TOPK_SIM)
