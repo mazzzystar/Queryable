@@ -29,7 +29,7 @@ struct PhotoSearcherModel {
     }
     
     func cosine_similarity(A: MLShapedArray<Float32>, B: MLShapedArray<Float32>) -> Float {
-        let magnitude = vDSP.rootMeanSquare(A.scalars) * vDSP.rootMeanSquare(B.scalars)
+        let magnitude = vDSP.sumOfSquares(A.scalars).squareRoot() * vDSP.sumOfSquares(B.scalars).squareRoot()
         let dotarray = vDSP.dot(A.scalars, B.scalars)
         return  dotarray / magnitude
     }
