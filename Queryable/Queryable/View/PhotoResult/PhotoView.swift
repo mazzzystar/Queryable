@@ -27,7 +27,6 @@ struct PhotoView: View {
     @State private var imageRequestID: PHImageRequestID?
     @ObservedObject var photoSearcher: PhotoSearcher
     @Environment(\.dismiss) var dismiss
-    private let imageSize = CGSize(width: 1024, height: 1024)
     
     var body: some View {
         VStack {
@@ -135,7 +134,7 @@ struct PhotoView: View {
                 if HAS_NETWORK_PERMISSION {
                     await cache.requestOptions.isNetworkAccessAllowed = true
                 }
-                imageRequestID = await cache.requestImage(for: asset, targetSize: imageSize) { result in
+                imageRequestID = await cache.requestImage(for: asset, targetSize: PHImageManagerMaximumSize) { result in
                     Task {
                         if let result = result {
                             self.image = Image(uiImage: result.image!)
@@ -194,7 +193,7 @@ struct PhotoView: View {
                                         HAS_NETWORK_PERMISSION = true
                                     }
                                     
-                                    imageRequestID = await cache!.requestImage(for: asset, targetSize: imageSize) { result in
+                                    imageRequestID = await cache!.requestImage(for: asset, targetSize: PHImageManagerMaximumSize) { result in
                                         Task {
                                             if let result = result {
                                                 self.image = Image(uiImage: result.image!)
