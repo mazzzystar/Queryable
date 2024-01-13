@@ -42,7 +42,7 @@ class PhotoSearcher: ObservableObject {
     
     // -3: default, -2: Is searching now, -1: Never indexed. 0: No result. 1: Has result.
     @Published var searchResultCode: SEARCH_RESULT_CODE = .DEFAULT
-    @Published var buildIndexCode: Int = BUILD_INDEX_CODE.DEFAULT.rawValue
+    @Published var buildIndexCode: BUILD_INDEX_CODE = .DEFAULT
     @Published var totalUnIndexedPhotosNum: Int = -1
     @Published var curIndexingNums: Int = -1
     @Published var curShowingPhoto: UIImage = UIImage(systemName: "photo")!
@@ -77,7 +77,7 @@ class PhotoSearcher: ObservableObject {
         self.TOPK_SIM = defaultTOPK_SIM
     }
     
-    func changeState(from statusCode1: Int, to statusCode2: Int) {
+    func changeState(from statusCode1: BUILD_INDEX_CODE, to statusCode2: BUILD_INDEX_CODE) {
         if self.buildIndexCode == statusCode1 {
             self.buildIndexCode = statusCode2
         }
@@ -117,7 +117,7 @@ class PhotoSearcher: ObservableObject {
     }
     
     func fetchPhotos() async {
-        self.buildIndexCode = BUILD_INDEX_CODE.LOADING_PHOTOS.rawValue
+        self.buildIndexCode = .LOADING_PHOTOS
         
         // set network authorization
         await self.photoCollection.cache.requestOptions.isNetworkAccessAllowed = false
@@ -145,13 +145,13 @@ class PhotoSearcher: ObservableObject {
             }
             
             if self.totalPhotosNum > 0 {
-                self.buildIndexCode = BUILD_INDEX_CODE.PHOTOS_LOADED.rawValue
+                self.buildIndexCode = .PHOTOS_LOADED
             }
         }
     }
     
     func loadImageIncoder() async {
-        self.buildIndexCode = BUILD_INDEX_CODE.LOADING_MODEL.rawValue
+        self.buildIndexCode = .LOADING_MODEL
         guard let path = Bundle.main.path(forResource: "CoreMLModels", ofType: nil, inDirectory: nil) else {
             fatalError("Fatal error: failed to find the CoreML models.")
         }
@@ -164,12 +164,11 @@ class PhotoSearcher: ObservableObject {
                 // 8.542439937591553 seconds used for loading img encoder
                 print("\(startingTime.timeIntervalSinceNow * -1) seconds used for loading img encoder")
                 self.imageEncoder = imgEncoder
-                self.buildIndexCode = BUILD_INDEX_CODE.MODEL_LOADED.rawValue
-                self.buildIndexCode = BUILD_INDEX_CODE.IS_BUILDING_INDEX.rawValue
+                self.buildIndexCode = .MODEL_LOADED
+                self.buildIndexCode = .IS_BUILDING_INDEX
             } catch let error {
                 logger.error("Failed to load model: \(error.localizedDescription)")
             }
-            
         }
     }
     
@@ -376,7 +375,7 @@ class PhotoSearcher: ObservableObject {
         // delete large memory usage
         self.buildingEmbedding = [String: MLMultiArray]()
         self.imageEncoder = nil
-        self.buildIndexCode = BUILD_INDEX_CODE.BUILD_FINISHED.rawValue
+        self.buildIndexCode = .BUILD_FINISHED
         self.totalUnIndexedPhotosNum = 0
         
         clearCache()

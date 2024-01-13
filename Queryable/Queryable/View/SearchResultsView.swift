@@ -211,13 +211,13 @@ struct TipsView: View {
             NavigationLink(destination: BuildIndexView(photoSearcher: photoSearcher)
                 .onAppear {
                     Task {
-                        photoSearcher.buildIndexCode = BUILD_INDEX_CODE.PHOTOS_LOADED.rawValue
+                        photoSearcher.buildIndexCode = .PHOTOS_LOADED
                         await photoSearcher.fetchPhotos()
-                        photoSearcher.buildIndexCode = BUILD_INDEX_CODE.PHOTOS_LOADED.rawValue
+                        photoSearcher.buildIndexCode = .PHOTOS_LOADED
                     }
                 }
                 .onDisappear {
-                    photoSearcher.buildIndexCode = BUILD_INDEX_CODE.DEFAULT.rawValue
+                    photoSearcher.buildIndexCode = .DEFAULT
                 }
             ) {
                 HStack {

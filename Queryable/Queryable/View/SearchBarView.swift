@@ -11,21 +11,16 @@ struct SearchBarView: View {
     @FocusState private var inputFocused: Bool
     @ObservedObject var photoSearcher: PhotoSearcher
     @State var searchText: String = ""
-    private let showString = ["My love", "Dark night room with a lamp", "Snow outside the window", "Deep blue", "Cute kitten", "Photos of our gathering", "Beach, waves, sunset", "In car view, car on the road", "Screen display of traffic info", "Selfie in front of mirror", "Cheers"].randomElement()
+    private let showString: LocalizedStringKey = ["My love", "Dark night room with a lamp", "Snow outside the window", "Deep blue", "Cute kitten", "Photos of our gathering", "Beach, waves, sunset", "In car view, car on the road", "Screen display of traffic info", "Selfie in front of mirror", "Cheers"].randomElement()!
     
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
-                .accessibilityAddTraits(.isImage)
-                .accessibilityHint(Text("An icon, no actual usage"))
-//            TextField("Input here to search Photos", text: $searchText)
-            TextField("\"\(NSLocalizedString(showString ?? "My love", comment: ""))\"", text: $searchText)
-//            TextField("Input text here, e.g. \"We fell in love\"", text: $searchText)
-                .modifier(TextFieldClearButton(photoSearcher: photoSearcher, inputFocused: $inputFocused, text: $searchText))
+                .accessibilityHidden(true)
+            TextField(showString, text: $searchText)
                 .multilineTextAlignment(.leading)
                 .focused($inputFocused)
                 .accessibilityAddTraits(.isSearchField)
-                .accessibilityLabel(Text("Text Field"))
                 .accessibilityHint(Text("Input your sentences here, then press enter"))
                 .onSubmit {
                     print("Searching...")
@@ -34,9 +29,23 @@ struct SearchBarView: View {
                     }
                 }
                 .submitLabel(.search)
+            if !searchText.isEmpty {
+                Button {
+                    self.clearSearch()
+                } label: {
+                    Image(systemName: "delete.left")
+                        .foregroundColor(Color(UIColor.opaqueSeparator))
+                        .accessibilityLabel("Clear search")
+                }
+            }
         }
     }
     
+    private func clearSearch() {
+        self.searchText = ""
+        inputFocused = true
+        photoSearcher.searchResultCode = .MODEL_PREPARED
+    }
 }
 
 
