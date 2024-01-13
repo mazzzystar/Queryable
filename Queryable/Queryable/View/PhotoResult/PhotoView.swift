@@ -135,7 +135,7 @@ struct PhotoView: View {
                 if HAS_NETWORK_PERMISSION {
                     await cache.requestOptions.isNetworkAccessAllowed = true
                 }
-                imageRequestID = await cache.requestImage(for: asset, targetSize: imageSize) { result in
+                imageRequestID = await cache.requestImage(for: asset, targetSize: PHImageManagerMaximumSize) { result in
                     Task {
                         if let result = result {
                             self.image = Image(uiImage: result.image!)
