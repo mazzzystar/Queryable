@@ -24,7 +24,7 @@ The Android version([Code](https://github.com/greyovo/PicQuery)) developed by [@
 
 The process is as follows:
 
-![](https://mazzzystar.github.io/images/2022-12-28/Queryable-flow-chart.jpg)
+![](https://raw.githubusercontent.com/mazzzystar/Queryable/ce184131123650fb014eaa8514e37b1202625d14/Queryable/Queryable/Assets.xcassets/Queryable-flow-chart.jpeg)
 
 For more details, please refer to my blog: [Run CLIP on iPhone to Search Photos](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/).
 
