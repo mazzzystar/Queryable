@@ -94,10 +94,10 @@ class PhotoSearcher: ObservableObject {
         self.photoSearchModel.load_text_encoder()
         print("Text encoder loaded.")
         if self.loadEmbeddingsData(fileName: self.EMBEDDING_DATA_NAME) {
-            print("Text embedding loaded. total \(self.savedEmbedding.count)")
+            print("Photos embedding loaded. total \(self.savedEmbedding.count)")
         } else {
             self.searchResultCode = .NEVER_INDEXED
-            print("Load text embedding failure.")
+            print("Load photos embedding failure.")
         }
         
         // set network authorization
