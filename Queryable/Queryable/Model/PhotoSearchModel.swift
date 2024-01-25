@@ -28,7 +28,7 @@ struct PhotoSearcherModel {
         return emb!
     }
     
-    func cosine_similarity(A: MLShapedArray<Float32>, B: MLShapedArray<Float32>) -> Float {
+    func cosine_similarity(A: MLShapedArray<Float32>, B: MLShapedArray<Float32>) async -> Float {
         let magnitude = vDSP.sumOfSquares(A.scalars).squareRoot() * vDSP.sumOfSquares(B.scalars).squareRoot()
         let dotarray = vDSP.dot(A.scalars, B.scalars)
         return  dotarray / magnitude

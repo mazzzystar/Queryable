@@ -484,7 +484,7 @@ class PhotoSearcher: ObservableObject {
                     // 0.20966589450836182 seconds used for find top3 sim in 34639 scores.
                     
                     let FINAL_TOP_K = min(self.TOPK_SIM, self.emb_sim_dict.count)
-                    let topK_sim = self.emb_sim_dict.sorted { $0.value < $1.value }.prefix(FINAL_TOP_K)
+                    let topK_sim = self.emb_sim_dict.sorted { $0.value > $1.value }.prefix(FINAL_TOP_K)
                     print("\(startingTime2.timeIntervalSinceNow * -1) seconds used for find top\(FINAL_TOP_K) sim in \(self.emb_sim_dict.keys.count) scores.")
                     
                     let startingTime3 = Date()
@@ -530,7 +530,7 @@ class PhotoSearcher: ObservableObject {
                 // 0.20966589450836182 seconds used for find top3 sim in 34639 scores.
                 
                 let FINAL_TOP_K = min(self.TOPK_SIM, self.emb_sim_dict.count)
-                let topK_sim = self.emb_sim_dict.sorted { $0.value < $1.value }.prefix(FINAL_TOP_K)
+                let topK_sim = self.emb_sim_dict.sorted { $0.value > $1.value }.prefix(FINAL_TOP_K)
                 print("\(startingTime2.timeIntervalSinceNow * -1) seconds used for find top\(FINAL_TOP_K) sim in \(self.emb_sim_dict.keys.count) scores.")
                 
                 let startingTime3 = Date()
@@ -611,7 +611,7 @@ class PhotoSearcher: ObservableObject {
 //            return
 //        }
         let img_emb = MLShapedArray<Float32>(converting: img_emb)
-        let sim = await self.photoSearchModel.spherical_dist_loss(A: text_emb, B: img_emb)
+        let sim = await self.photoSearchModel.cosine_similarity(A: text_emb, B: img_emb)
         self.emb_sim_dict[img_id] = sim
     }
     
