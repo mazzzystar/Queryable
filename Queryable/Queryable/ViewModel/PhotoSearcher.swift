@@ -281,11 +281,7 @@ class PhotoSearcher: ObservableObject {
             let _cur_asset = self.photoCollection.photoAssets[idx]
             
             self.allPhotosId[_cur_asset.id] = 1
-            
-            if let _ = self.savedEmbedding[_cur_asset.id] {
-                
-            }
-            else {
+            if self.savedEmbedding[_cur_asset.id] == nil {
                 self.unIndexedPhotos.append(_cur_asset)
             }
         }
@@ -296,16 +292,13 @@ class PhotoSearcher: ObservableObject {
     }
     
     private func judgeIfAssetUnidexed(asset: PhotoAsset) async {
-        if let _ = self.savedEmbedding[asset.id] {
-
-        }
-        else {
+        if self.savedEmbedding[asset.id] == nil {
             self.unIndexedPhotos.append(asset)
         }
     }
     
     func deleteEmbeddingByAsset(asset: PhotoAsset) async {
-        if let _ = self.savedEmbedding[asset.id] {
+        if self.savedEmbedding[asset.id] != nil {
             self.savedEmbedding.removeValue(forKey: asset.id)
             print("\(asset.id) deleted.")
         }
@@ -314,14 +307,14 @@ class PhotoSearcher: ObservableObject {
     func updateEmbedding(new_indexed_results: [String: MLMultiArray]) {
         // update results
         print("Before update, embedding count=\(self.savedEmbedding.count)")
-        for key in new_indexed_results.keys {
-            self.savedEmbedding[key] = new_indexed_results[key]
+        for (key, embedding) in new_indexed_results {
+            self.savedEmbedding[key] = embedding
         }
         
         var final_all_results = [Embedding]()
         
-        for key in self.savedEmbedding.keys {
-            let _embedding = Embedding(id: key, embedding: self.savedEmbedding[key]!)
+        for (key, embedding) in self.savedEmbedding {
+            let _embedding = Embedding(id: key, embedding: embedding)
             final_all_results.append(_embedding)
         }
         
@@ -559,7 +552,7 @@ class PhotoSearcher: ObservableObject {
         
         var cnt = 0
         var img_emb_piece = [String: MLMultiArray]()
-        var img_emb_pieces_lst = [[String: MLMultiArray]()]
+        var img_emb_pieces_lst = [[String: MLMultiArray]]()
         for emb in img_embs_dict {
             img_emb_piece[emb.key] = emb.value
             cnt += 1
@@ -583,9 +576,8 @@ class PhotoSearcher: ObservableObject {
             for emb_dict in img_embs_dict_lst {
                 if !emb_dict.isEmpty {
                     group.addTask {
-                        for key in emb_dict.keys {
-                            let cur_img_emb = emb_dict[key]
-                            await self.computeSingleEmbeddingSim(text_emb: text_emb, img_emb: cur_img_emb!, img_id: key)
+                        for (key, cur_img_emb) in emb_dict {
+                            await self.computeSingleEmbeddingSim(text_emb: text_emb, img_emb: cur_img_emb, img_id: key)
                         } 
                     }
                 }
@@ -599,9 +591,8 @@ class PhotoSearcher: ObservableObject {
     }
     
     private func simpleComputeAllEmbeddingSim(text_emb: MLShapedArray<Float32>, img_embs_dict: [String: MLMultiArray]) async {
-        for key in img_embs_dict.keys {
-            let cur_img_emb = img_embs_dict[key]
-            await self.computeSingleEmbeddingSim(text_emb: text_emb, img_emb: cur_img_emb!, img_id: key)
+        for (key,cur_img_emb) in img_embs_dict {
+            await self.computeSingleEmbeddingSim(text_emb: text_emb, img_emb: cur_img_emb, img_id: key)
         }
     }
     
