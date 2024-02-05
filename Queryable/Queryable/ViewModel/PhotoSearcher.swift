@@ -184,7 +184,7 @@ class PhotoSearcher: ObservableObject {
         do {
             self.curIndexingPhoto = _curIndexingPhoto ?? UIImage(systemName: "photo")!
             if let _curIndexingPhoto {
-                let img_emb = try await self.imageEncoder?.encode(image: _curIndexingPhoto)
+                let img_emb = try await self.imageEncoder?.computeImgEmbedding(img: _curIndexingPhoto)
                 self.buildingEmbedding[asset.id] = MLMultiArray(img_emb!)
             } else {
                 self.buildingEmbedding[asset.id] = MLMultiArray(defaultEmbedding())
@@ -258,7 +258,7 @@ class PhotoSearcher: ObservableObject {
                     }
                 }
                 
-                let _emb = try await self.imageEncoder?.encode(image: self.curIndexingPhoto)
+                let _emb = try await self.imageEncoder?.computeImgEmbedding(img: self.curIndexingPhoto)
                 let embeddingObject = Embedding(id: asset.phAsset!.id, embedding: MLMultiArray(_emb!))
                 results.append(embeddingObject)
         

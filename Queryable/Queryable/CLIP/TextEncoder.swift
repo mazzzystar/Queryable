@@ -61,7 +61,7 @@ public struct TextEncoder {
     ///  - Parameters:
     ///     - text: Input text to be tokenized and then embedded
     ///  - Returns: Embedding representing the input text
-    public func encode(_ text: String) throws -> MLShapedArray<Float32> {
+    private func encode(_ text: String) throws -> MLShapedArray<Float32> {
 
         // Get models expected input length
         let inputLength = inputShape.last!
