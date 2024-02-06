@@ -128,25 +128,23 @@ class PhotoSearcher: ObservableObject {
             return
         }
         
-        Task {
-            do {
-                try await self.photoCollection.load()
-                
-                print("Total \(photoCollection.photoAssets.count) photos loaded.")
-                
-                defaults.set(true, forKey: self.KEY_HAS_ACCESS_TO_PHOTOS)
-                
-                self.totalPhotosNum = photoCollection.photoAssets.count
-                
-                try await self.fetchUnIndexedPhotos()
-                
-            } catch let error {
-                logger.error("Failed to load photo collection: \(error.localizedDescription)")
-            }
+        do {
+            try await self.photoCollection.load()
             
-            if self.totalPhotosNum > 0 {
-                self.buildIndexCode = .PHOTOS_LOADED
-            }
+            print("Total \(photoCollection.photoAssets.count) photos loaded.")
+            
+            defaults.set(true, forKey: self.KEY_HAS_ACCESS_TO_PHOTOS)
+            
+            self.totalPhotosNum = photoCollection.photoAssets.count
+            
+            try await self.fetchUnIndexedPhotos()
+            
+        } catch let error {
+            logger.error("Failed to load photo collection: \(error.localizedDescription)")
+        }
+        
+        if self.totalPhotosNum > 0 {
+            self.buildIndexCode = .PHOTOS_LOADED
         }
     }
     
@@ -157,18 +155,16 @@ class PhotoSearcher: ObservableObject {
         }
         let resourceURL = URL(fileURLWithPath: path)
         
-        Task {
-            do {
-                let startingTime = Date()
-                let imgEncoder = try ImgEncoder(resourcesAt: resourceURL)
-                // 8.542439937591553 seconds used for loading img encoder
-                print("\(startingTime.timeIntervalSinceNow * -1) seconds used for loading img encoder")
-                self.imageEncoder = imgEncoder
-                self.buildIndexCode = .MODEL_LOADED
-                self.buildIndexCode = .IS_BUILDING_INDEX
-            } catch let error {
-                logger.error("Failed to load model: \(error.localizedDescription)")
-            }
+        do {
+            let startingTime = Date()
+            let imgEncoder = try ImgEncoder(resourcesAt: resourceURL)
+            // 8.542439937591553 seconds used for loading img encoder
+            print("\(startingTime.timeIntervalSinceNow * -1) seconds used for loading img encoder")
+            self.imageEncoder = imgEncoder
+            self.buildIndexCode = .MODEL_LOADED
+            self.buildIndexCode = .IS_BUILDING_INDEX
+        } catch let error {
+            logger.error("Failed to load model: \(error.localizedDescription)")
         }
     }
     
@@ -413,8 +409,7 @@ class PhotoSearcher: ObservableObject {
     }
     
     private func getDocumentsDirectory() -> URL {
-        let arrayPaths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return arrayPaths[0]
+        URL.documentsDirectory
     }
     
     
@@ -427,96 +422,49 @@ class PhotoSearcher: ObservableObject {
         self.searchResultPhotoAssets = [PhotoAsset]()
         
         self.searchResultCode = .IS_SEARCHING
-        Task {
-            do {
-                if self.savedEmbedding.isEmpty {
-                    print("Never indexed.")
-                    self.searchResultCode = .NEVER_INDEXED
-                } else {
-                    // search from indexed result
-                    print("Has indexed data, now begin to search.")
-                    print("Test if I can fetch all photos: \(self.photoCollection.photoAssets.count)")
-                    
-                    // Filter whether Photo has been deleted.
-                    if !self.allPhotosId.isEmpty {
-                        let startingTime = Date()
-                        
-                        var cnt = 0
-                        for key in self.savedEmbedding.keys {
-                            if let _ = self.allPhotosId[key] {
-                            } else {
-                                cnt += 1
-                                self.savedEmbedding.removeValue(forKey: key)
-                            }
-                        }
-                        print("\(cnt) keys in savedEmbedding has been deleted.")
-                        
-                        if cnt > 0 {
-                            self.updateEmbedding(new_indexed_results: [String : MLMultiArray]())
-                        }
-                        print("\(startingTime.timeIntervalSinceNow * -1) seconds used for save the updated embedding to file.")
-                    }
-                    
-                    print("Searching query = \(query)")
-                    let _text_emb = self.photoSearchModel.text_embedding(prompt: query)
-                    print(_text_emb)
-                    
+        do {
+            if self.savedEmbedding.isEmpty {
+                print("Never indexed.")
+                self.searchResultCode = .NEVER_INDEXED
+            } else {
+                // search from indexed result
+                print("Has indexed data, now begin to search.")
+                print("Test if I can fetch all photos: \(self.photoCollection.photoAssets.count)")
+                
+                // Filter whether Photo has been deleted.
+                if !self.allPhotosId.isEmpty {
                     let startingTime = Date()
-        
                     
-                    let img_emb_pieces_lst = self.seperateEmbeddingsByCoreNums(img_embs_dict: self.savedEmbedding)
-                    
-                    // 6.69201397895813 seconds used for calculat sim between 34639 embs before.
-                    // self.simpleComputeAllEmbeddingSim(text_emb: _text_emb, img_emb_pieces_lst: img_emb_pieces_lst)
-                    
-                    // reduce to 2.8s.
-                    try await self.batchComputeEmbeddingSimilarity(text_emb: _text_emb, img_embs_dict_lst: img_emb_pieces_lst)
-                    print("\(startingTime.timeIntervalSinceNow * -1) seconds used for calculat sim between \(self.savedEmbedding.keys.count) embs.")
-                    
-                    let startingTime2 = Date()
-                    // 0.20966589450836182 seconds used for find top3 sim in 34639 scores.
-                    
-                    let FINAL_TOP_K = min(self.TOPK_SIM, self.emb_sim_dict.count)
-                    let topK_sim = self.emb_sim_dict.sorted { $0.value > $1.value }.prefix(FINAL_TOP_K)
-                    print("\(startingTime2.timeIntervalSinceNow * -1) seconds used for find top\(FINAL_TOP_K) sim in \(self.emb_sim_dict.keys.count) scores.")
-                    
-                    let startingTime3 = Date()
-                    
-                    for photo in topK_sim {
-                        let photoSim = photo.value
-                        let photoID = photo.key
-                        print(photoID, photoSim)
-                        
-                        let _asset = PhotoAsset(identifier: photoID)
-                        self.searchResultPhotoAssets.append(_asset)
+                    var cnt = 0
+                    for key in self.savedEmbedding.keys {
+                        if let _ = self.allPhotosId[key] {
+                        } else {
+                            cnt += 1
+                            self.savedEmbedding.removeValue(forKey: key)
+                        }
                     }
-                    print("\(startingTime3.timeIntervalSinceNow * -1) seconds used for download top\(FINAL_TOP_K) sim images.")
+                    print("\(cnt) keys in savedEmbedding has been deleted.")
                     
-                    self.searchResultCode = .HAS_RESULT
+                    if cnt > 0 {
+                        self.updateEmbedding(new_indexed_results: [String : MLMultiArray]())
+                    }
+                    print("\(startingTime.timeIntervalSinceNow * -1) seconds used for save the updated embedding to file.")
                 }
                 
-            } catch let error {
-                logger.error("Failed to search photos: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    
-    /**
-     Similarity ranking
-     */
-    func similarPhoto(with photoAsset: PhotoAsset) async {
-        self.isFindingSimilarPhotos = true
-        self.similarPhotoAssets = [PhotoAsset]()
-        Task {
-            do {
-                let _img_emb = MLShapedArray<Float32>(converting: self.savedEmbedding[photoAsset.id]!)
-                print(_img_emb)
+                print("Searching query = \(query)")
+                let _text_emb = self.photoSearchModel.text_embedding(prompt: query)
+                print(_text_emb)
+                
                 let startingTime = Date()
     
+                
                 let img_emb_pieces_lst = self.seperateEmbeddingsByCoreNums(img_embs_dict: self.savedEmbedding)
+                
+                // 6.69201397895813 seconds used for calculat sim between 34639 embs before.
+                // self.simpleComputeAllEmbeddingSim(text_emb: _text_emb, img_emb_pieces_lst: img_emb_pieces_lst)
+                
                 // reduce to 2.8s.
-                try await self.batchComputeEmbeddingSimilarity(text_emb: _img_emb, img_embs_dict_lst: img_emb_pieces_lst)
+                try await self.batchComputeEmbeddingSimilarity(text_emb: _text_emb, img_embs_dict_lst: img_emb_pieces_lst)
                 print("\(startingTime.timeIntervalSinceNow * -1) seconds used for calculat sim between \(self.savedEmbedding.keys.count) embs.")
                 
                 let startingTime2 = Date()
@@ -531,18 +479,61 @@ class PhotoSearcher: ObservableObject {
                 for photo in topK_sim {
                     let photoSim = photo.value
                     let photoID = photo.key
-                    print(photoID, photoSim)
+                    logger.debug("photoID: \(photoID), sim: \(photoSim)")
                     
                     let _asset = PhotoAsset(identifier: photoID)
-                    self.similarPhotoAssets.append(_asset)
+                    self.searchResultPhotoAssets.append(_asset)
                 }
                 print("\(startingTime3.timeIntervalSinceNow * -1) seconds used for download top\(FINAL_TOP_K) sim images.")
                 
-                self.isFindingSimilarPhotos = false
-                
-            } catch let error {
-                logger.error("Failed to search photos: \(error.localizedDescription)")
+                self.searchResultCode = .HAS_RESULT
             }
+            
+        } catch let error {
+            logger.error("Failed to search photos: \(error.localizedDescription)")
+        }
+    }
+    
+    
+    /**
+     Similarity ranking
+     */
+    func similarPhoto(with photoAsset: PhotoAsset) async {
+        self.isFindingSimilarPhotos = true
+        self.similarPhotoAssets = [PhotoAsset]()
+        do {
+            let _img_emb = MLShapedArray<Float32>(converting: self.savedEmbedding[photoAsset.id]!)
+            print(_img_emb)
+            let startingTime = Date()
+
+            let img_emb_pieces_lst = self.seperateEmbeddingsByCoreNums(img_embs_dict: self.savedEmbedding)
+            // reduce to 2.8s.
+            try await self.batchComputeEmbeddingSimilarity(text_emb: _img_emb, img_embs_dict_lst: img_emb_pieces_lst)
+            print("\(startingTime.timeIntervalSinceNow * -1) seconds used for calculat sim between \(self.savedEmbedding.keys.count) embs.")
+            
+            let startingTime2 = Date()
+            // 0.20966589450836182 seconds used for find top3 sim in 34639 scores.
+            
+            let FINAL_TOP_K = min(self.TOPK_SIM, self.emb_sim_dict.count)
+            let topK_sim = self.emb_sim_dict.sorted { $0.value > $1.value }.prefix(FINAL_TOP_K)
+            print("\(startingTime2.timeIntervalSinceNow * -1) seconds used for find top\(FINAL_TOP_K) sim in \(self.emb_sim_dict.keys.count) scores.")
+            
+            let startingTime3 = Date()
+            
+            for photo in topK_sim {
+                let photoSim = photo.value
+                let photoID = photo.key
+                print(photoID, photoSim)
+                
+                let _asset = PhotoAsset(identifier: photoID)
+                self.similarPhotoAssets.append(_asset)
+            }
+            print("\(startingTime3.timeIntervalSinceNow * -1) seconds used for download top\(FINAL_TOP_K) sim images.")
+            
+            self.isFindingSimilarPhotos = false
+            
+        } catch let error {
+            logger.error("Failed to search photos: \(error.localizedDescription)")
         }
     }
     
