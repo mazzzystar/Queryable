@@ -26,7 +26,6 @@ enum BUILD_INDEX_CODE: Int {
     case LOADING_PHOTOS      = -2
     case PHOTOS_LOADED       = -1
     case LOADING_MODEL       = 0
-    case MODEL_LOADED        = 1
     case IS_BUILDING_INDEX   = 2
     case BUILD_FINISHED      = 3
 }
@@ -161,7 +160,6 @@ class PhotoSearcher: ObservableObject {
             // 8.542439937591553 seconds used for loading img encoder
             print("\(startingTime.timeIntervalSinceNow * -1) seconds used for loading img encoder")
             self.imageEncoder = imgEncoder
-            self.buildIndexCode = .MODEL_LOADED
             self.buildIndexCode = .IS_BUILDING_INDEX
         } catch let error {
             logger.error("Failed to load model: \(error.localizedDescription)")
@@ -368,10 +366,6 @@ class PhotoSearcher: ObservableObject {
         self.totalUnIndexedPhotosNum = 0
         
         clearCache()
-        print("Loading text encoder..")
-        self.photoSearchModel.load_text_encoder()
-        print("Text encoder loaded.")
-
     }
     
     func loadEmbeddingsData(fileName: String) -> Bool {
