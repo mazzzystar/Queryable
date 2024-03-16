@@ -48,6 +48,7 @@ If you are interested in optimizing certain aspects(such as https://github.com/m
 * Thanks to [
 Chris Buguet](https://github.com/codingstyle), the issue (https://github.com/mazzzystar/Queryable/issues/5) where devices below iPhone 11 couldn't run has been fixed.
 * [greyovo](https://github.com/greyovo) has completed the Android app(https://github.com/mazzzystar/Queryable/issues/12) development: [Google Play](https://play.google.com/store/apps/details?id=me.grey.picquery). The author stated that the code will be released in the future.
+* [yujinqiu](https://github.com/yujinqiu) has developed the macOS version named [Searchable](https://www.engineerdraft.com/en/searchable/), which supports full-disk search. See [#4](https://github.com/mazzzystar/Queryable/issues/4#issuecomment-1990979537)
 
 Thank you for your contribution : )
 
