@@ -7,7 +7,7 @@
 
 The open-source code of Queryable, an iOS app, leverages the OpenAI's [CLIP](https://github.com/openai/CLIP) model to conduct offline searches in the 'Photos' album. Unlike the category-based search model built into the iOS Photos app, Queryable allows you to use natural language statements, such as `a brown dog sitting on a bench`, to search your album. Since it's offline, your album privacy won't be compromised by any company, including Apple or Google.
 
-[Blog](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [Website](https://queryable.app/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone) | [Hacker News](https://news.ycombinator.com/item?id=34686947) | [故事](https://v2ex.com/t/955496)
+[Blog](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone) | [Hacker News](https://news.ycombinator.com/item?id=34686947) | [Website](https://queryable.app/) | [故事](https://v2ex.com/t/955496)
 
 ## How does it work?
 * Encode all album photos using the CLIP Image Encoder, compute image vectors, and save them.
