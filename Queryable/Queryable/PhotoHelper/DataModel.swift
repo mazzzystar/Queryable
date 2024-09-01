@@ -96,7 +96,7 @@ final class DataModel: ObservableObject {
     
     func loadThumbnail() async {
         guard let asset = photoCollection.photoAssets.first  else { return }
-        await photoCollection.cache.requestImage(for: asset, targetSize: CGSize(width: 224, height: 224))  { result in
+        await photoCollection.cache.requestImage(for: asset, targetSize: CGSize(width: 256, height: 256)) { result in
             if let result = result {
                 Task { @MainActor in
                     self.thumbnailImage = result.image

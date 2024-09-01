@@ -169,7 +169,7 @@ class PhotoSearcher: ObservableObject {
     
     func fetchSingleAssetComputeEmbedding(asset: PhotoAsset) async throws {
         var _curIndexingPhoto: UIImage? = nil
-        self.imageRequestID = await photoCollection.cache.requestImage(for: asset, targetSize: CGSize(width: 224, height: 224)) { result in
+        self.imageRequestID = await photoCollection.cache.requestImage(for: asset, targetSize: CGSize(width: 256, height: 256)) { result in
             if let result = result {
                 _curIndexingPhoto = result.image
             }
@@ -203,7 +203,7 @@ class PhotoSearcher: ObservableObject {
     }
     
     func batchBuildIndex(assets: [PhotoAsset]) async throws {
-        await photoCollection.cache.startCaching(for: assets, targetSize: CGSize(width: 224, height: 224))
+        await photoCollection.cache.startCaching(for: assets, targetSize: CGSize(width: 256, height: 256))
         let  processors = ProcessInfo.processInfo.activeProcessorCount
         let PART_OF_LIST = Int(assets.count / Int(processors)) + 1
         
@@ -232,12 +232,12 @@ class PhotoSearcher: ObservableObject {
             }
         }
         
-        await photoCollection.cache.stopCaching(for: assets, targetSize: CGSize(width: 224, height: 224))
+        await photoCollection.cache.stopCaching(for: assets, targetSize: CGSize(width: 256, height: 256))
     }
     
     func fetchAsstesComputeEmbeddings(assets: [PhotoAsset]) async throws -> [Embedding] {
         let startingTime = Date()
-        await photoCollection.cache.startCaching(for: assets, targetSize: CGSize(width: 224, height: 224))
+        await photoCollection.cache.startCaching(for: assets, targetSize: CGSize(width: 256, height: 256))
         print("\(startingTime.timeIntervalSinceNow * -1) seconds to load \(self.BUILD_INDEX_FRAGMENT_LENGTH) image cache")
         
         
@@ -246,7 +246,7 @@ class PhotoSearcher: ObservableObject {
         for idx in 0..<assets.count {
             do {
                 let asset = assets[idx]
-                self.imageRequestID = await photoCollection.cache.requestImage(for: asset, targetSize: CGSize(width: 224, height: 224)) { result in
+                self.imageRequestID = await photoCollection.cache.requestImage(for: asset, targetSize: CGSize(width: 256, height: 256)) { result in
                     if let result = result {
                         self.curIndexingPhoto = result.image!
                     }
@@ -262,7 +262,7 @@ class PhotoSearcher: ObservableObject {
             }
             
         }
-        await photoCollection.cache.stopCaching(for: assets, targetSize: CGSize(width: 224, height: 224))
+        await photoCollection.cache.stopCaching(for: assets, targetSize: CGSize(width: 256, height: 256))
         return results
     }
     

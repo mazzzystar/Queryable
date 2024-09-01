@@ -20,7 +20,7 @@ public struct TextEncoder {
     init(resourcesAt baseURL: URL,
          configuration config: MLModelConfiguration = .init()
     ) throws {
-        let textEncoderURL = baseURL.appending(path: "TextEncoder_float32.mlmodelc")
+        let textEncoderURL = baseURL.appending(path: "TextEncoder_mobileCLIP_s2.mlmodelc")
         let vocabURL = baseURL.appending(path: "vocab.json")
         let mergesURL = baseURL.appending(path: "merges.txt")
         
@@ -94,7 +94,7 @@ public struct TextEncoder {
             dictionary: [inputName: MLMultiArray(inputArray)])
 
         let result = try queue.sync { try model.prediction(from: inputFeatures) }
-        let embeddingFeature = result.featureValue(for: "embOutput")
+        let embeddingFeature = result.featureValue(for: "text_embeddings")
         return MLShapedArray<Float32>(converting: embeddingFeature!.multiArrayValue!)
     }
 

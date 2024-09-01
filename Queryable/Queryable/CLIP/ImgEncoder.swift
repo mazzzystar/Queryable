@@ -15,7 +15,7 @@ public struct ImgEncoder {
     init(resourcesAt baseURL: URL,
          configuration config: MLModelConfiguration = .init()
     ) throws {
-        let imgEncoderURL = baseURL.appending(path:"ImageEncoder_float32.mlmodelc")
+        let imgEncoderURL = baseURL.appending(path:"ImageEncoder_mobileCLIP_s2.mlmodelc")
         let imgEncoderModel = try MLModel(contentsOf: imgEncoderURL, configuration: config)
         self.model = imgEncoderModel
     }
@@ -34,7 +34,7 @@ public struct ImgEncoder {
     
     private func encode(image: UIImage) async throws -> MLShapedArray<Float32> {
         do {
-            guard let resizedImage = try image.resizeImageTo(size:CGSize(width: 224, height: 224)) else {
+            guard let resizedImage = try image.resizeImageTo(size:CGSize(width: 256, height: 256)) else {
                 throw ImageEncodingError.resizeError
             }
             

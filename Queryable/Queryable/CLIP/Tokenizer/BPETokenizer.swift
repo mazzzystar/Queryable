@@ -18,13 +18,17 @@ public struct BPETokenizer {
     let endToken: String = "<|endoftext|>"
 
     /// The token used for padding
-    let padToken: String = "<|endoftext|>"
+    let padToken: String = "[PAD]"
 
     /// The unknown token.
-    let unknownToken: String = "<|endoftext|>"
+    let unknownToken: String = "[UNK]"
 
     var unknownTokenID: Int {
         vocabulary[unknownToken, default: 0]
+    }
+    
+    var padTokenID: Int {
+        vocabulary[padToken, default: 0]
     }
 
     /// Creates a tokenizer.
@@ -89,7 +93,7 @@ public struct BPETokenizer {
 
     /// Encode an input string to a sequence of tokens
     func encode(input: String) -> [String] {
-        let normalized = input.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let normalized = input.basicClean()
         let words = normalized.split(separator: " ")
         return words.flatMap({ encode(word: $0) })
     }
@@ -177,5 +181,17 @@ extension BPETokenizer {
             self.first = first
             self.second = second
         }
+    }
+}
+
+
+extension String {
+    func basicClean() -> String {
+        // Mimic Python's `basic_clean` and `whitespace_clean`
+        let cleaned = self.trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()  // Python example used `.lower()`
+            .replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        return cleaned
     }
 }
