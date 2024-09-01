@@ -27,7 +27,7 @@ For more details, please refer to my blog: [Run CLIP on iPhone to Search Photos]
 
 [2024-09-01]: Now supports Apple's [MobileCLIP](https://github.com/apple/ml-mobileclip).
 
-You can download the exported `MobileCLIP_TextEncoder.mlmodelc` and `MobileCLIP_ImgEncoder.mlmodelc` from [Google Drive](https://drive.google.com/drive/folders/12ze3UcqrXt9qeySGh_j_zWE-PWRDTzJv?usp=drive_link). Currently we use `s2` model as the default model, which balances both efficiency & precision.
+You can download the exported `TextEncoder_mobileCLIP_s2.mlmodelc` and `ImageEncoder_mobileCLIP_s2.mlmodelc` from [Google Drive](https://drive.google.com/drive/folders/12ze3UcqrXt9qeySGh_j_zWE-PWRDTzJv?usp=drive_link). Currently we use `s2` model as the default model, which balances both efficiency & precision.
 
 ## [PicQuery](https://github.com/greyovo/PicQuery)(Android)
 
@@ -39,14 +39,14 @@ The Android version([Code](https://github.com/greyovo/PicQuery)) developed by [@
 
 ## Run on Xcode
 
-Download the `ImageEncoder_float32.mlmodelc` and `TextEncoder_float32.mlmodelc` from [Google Drive](https://drive.google.com/drive/folders/12ze3UcqrXt9qeySGh_j_zWE-PWRDTzJv?usp=drive_link).
+Download the `TextEncoder_mobileCLIP_s2.mlmodelc` and `ImageEncoder_mobileCLIP_s2.mlmodelc` from [Google Drive](https://drive.google.com/drive/folders/12ze3UcqrXt9qeySGh_j_zWE-PWRDTzJv?usp=drive_link).
 Clone this repo, put the downloaded models below `CoreMLModels/` path and run Xcode, it should work.
 
 ## Core ML Export
 
 > If you only want to run Queryable, you can **skip this step** and directly use the exported model from [Google Drive](https://drive.google.com/drive/folders/12ze3UcqrXt9qeySGh_j_zWE-PWRDTzJv?usp=drive_link). If you wish to implement Queryable that supports your own native language, or do some model quantization/acceleration work, here are some guidelines.
 
-The trick is to separate the `TextEncoder` and `ImageEncoder` at the architecture level, and then load the model weights individually. Queryable uses the OpenAI [ViT-B/32](https://github.com/openai/CLIP) model, and I wrote a [Jupyter notebook](https://github.com/mazzzystar/Queryable/blob/main/PyTorch2CoreML.ipynb) to demonstrate how to separate, load, and export the Core ML model. The export results of the ImageEncoder's Core ML have a certain level of precision error, and more appropriate normalization parameters may be needed.
+The trick is to separate the `TextEncoder` and `ImageEncoder` at the architecture level, and then load the model weights individually. Queryable uses the ~~OpenAI [ViT-B/32](https://github.com/openai/CLIP)~~ Apple's [MobileCLIP](https://github.com/apple/ml-mobileclip) model, and I wrote a [Jupyter notebook](https://github.com/mazzzystar/Queryable/blob/main/PyTorch2CoreML.ipynb) to demonstrate how to separate, load, and export the Core ML model. The export results of the ImageEncoder's Core ML have a certain level of precision error, and more appropriate normalization parameters may be needed.
 
 - Update (2024/09/01): The default model is now Apple's [MobileCLIP](https://github.com/apple/ml-mobileclip). Exported Model: [Google Drive](https://drive.google.com/drive/folders/12ze3UcqrXt9qeySGh_j_zWE-PWRDTzJv?usp=drive_link)
 - Update (2023/09/22): Thanks to [jxiong22](https://github.com/jxiong22) for providing the [scripts](https://github.com/mazzzystar/Queryable/blob/main/PyTorch2CoreML-HuggingFace.ipynb) to convert the HuggingFace version of `clip-vit-base-patch32`. This has significantly reduced the precision error in the image encoder. For more details, see [#18](https://github.com/mazzzystar/Queryable/pull/18).
