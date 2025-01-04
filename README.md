@@ -4,11 +4,11 @@
     <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/6824141/252914927-51414112-236b-4f7a-a13b-5210f9203198.svg" alt="download-on-the-app-store">
 </a>
 
-[![Queryable](https://mazzzystar.github.io/images/2022-12-28/Queryable-search-result.jpg)](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
+[![Queryable](https://mazzzystar.com/images/2022-12-28/Queryable-search-result.jpg)](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
 
 The open-source code of Queryable, an iOS app, leverages the ~~OpenAI's [CLIP](https://github.com/openai/CLIP)~~ Apple's [MobileCLIP](https://github.com/apple/ml-mobileclip) model to conduct offline searches in the 'Photos' album. Unlike the category-based search model built into the iOS Photos app, Queryable allows you to use natural language statements, such as `a brown dog sitting on a bench`, to search your album. Since it's offline, your album privacy won't be compromised by any company, including Apple or Google.
 
-[Blog](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone) | [Website](https://queryable.app/) | [Story](https://mazzzystar.github.io/2024/07/21/Two-Years-of-an-AI-Photo-Album-Search-App/) | [故事](https://mazzzystar.github.io/2024/07/21/Two-Years-of-an-AI-Photo-Album-Search-App-zh/)
+[Blog](https://mazzzystar.com/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone) | [Website](https://queryable.app/) | [Story](https://mazzzystar.com/2024/07/21/Two-Years-of-an-AI-Photo-Album-Search-App/) | [故事](https://mazzzystar.com/2024/07/21/Two-Years-of-an-AI-Photo-Album-Search-App-zh/)
 
 ## How does it work?
 
@@ -21,7 +21,7 @@ The process is as follows:
 
 ![](https://raw.githubusercontent.com/mazzzystar/Queryable/ce184131123650fb014eaa8514e37b1202625d14/Queryable/Queryable/Assets.xcassets/Queryable-flow-chart.jpeg)
 
-For more details, please refer to my blog: [Run CLIP on iPhone to Search Photos](https://mazzzystar.github.io/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/).
+For more details, please refer to my blog: [Run CLIP on iPhone to Search Photos](https://mazzzystar.com/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/).
 
 # Updates
 
