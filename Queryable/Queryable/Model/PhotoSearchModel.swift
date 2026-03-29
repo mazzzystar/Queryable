@@ -37,7 +37,7 @@ struct PhotoSearcherModel {
     func spherical_dist_loss(A: MLShapedArray<Float32>, B: MLShapedArray<Float32>) async -> Float {
         let a = vDSP.divide(A.scalars, sqrt(vDSP.sumOfSquares(A.scalars)))
         let b = vDSP.divide(B.scalars, sqrt(vDSP.sumOfSquares(B.scalars)))
-        
+
         let magnitude = sqrt(vDSP.sumOfSquares(vDSP.subtract(a, b)))
         return pow(asin(magnitude / 2.0), 2) * 2.0
     }
