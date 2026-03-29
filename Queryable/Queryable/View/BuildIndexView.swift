@@ -97,22 +97,29 @@ struct StartBuildView: View {
 
 struct BuildingIndexView: View {
     @ObservedObject var photoSearcher: PhotoSearcher
-    
+
     var body: some View {
-        VStack {
-            Image(uiImage: photoSearcher.curShowingPhoto)
-                .resizable()
-                .scaledToFit()
-            
-            let end = "Photos have been indexed."
-            Text("\(photoSearcher.curIndexingNums+1)/\(photoSearcher.totalUnIndexedPhotosNum) \(NSLocalizedString(end, comment: ""))")
-            Text("Task runs entirely locally. Do not operate until completed.")
-                .foregroundColor(.gray)
-                .scaledToFit()
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
+                Image(uiImage: photoSearcher.curShowingPhoto)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: geometry.size.height * 0.8)
+
+                VStack(spacing: 4) {
+                    let end = "Photos have been indexed."
+                    Text("\(photoSearcher.curIndexingNums+1)/\(photoSearcher.totalUnIndexedPhotosNum) \(NSLocalizedString(end, comment: ""))")
+
+                    Text(NSLocalizedString("Task runs entirely locally. Do not operate until completed.", comment: ""))
+                        .padding([.leading, .trailing])
+                        .foregroundColor(.gray)
+                        .font(.caption)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                }
+                .frame(height: geometry.size.height * 0.2)
+            }
         }
-        
     }
 }
 
