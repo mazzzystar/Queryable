@@ -80,11 +80,6 @@ struct ConfigView: View {
                     }
 
 
-                    Link(destination: URL(string: "https://apps.apple.com/us/app/queryable/id1661598353?platform=iphone")!, label:
-                            {
-                        Label("Review the App", systemImage: "star")
-                    })
-
                 }
 
                 Section(header: Text("Feedback")) {
@@ -96,50 +91,14 @@ struct ConfigView: View {
                 }
                 
                 Section(header: Text("More App by This Developer")) {
-                    Link(destination: URL(string: NSLocalizedString("https://apps.apple.com/us/app/do-not-type/id6449760006", comment: "DoNotType app URL"))!, label: {
-                        
-                        HStack {
-                            Image("DoNotType")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                            Text(NSLocalizedString("Do Not Type", comment: "DNT app name"))
-                        }
-                    })
-                    .foregroundColor(Color.primary)
-                    
-                    Link(destination: URL(string: NSLocalizedString("https://apps.apple.com/us/app/id6447748965?platform=iphone", comment: "Queryable app URL"))!, label: {
-                        
-                        HStack {
-                            Image("Dolores")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                            Text(NSLocalizedString("Dolores: Your Virtual Friend", comment: "Dolores app name"))
-                        }
-                    })
-                    .foregroundColor(Color.primary)
-                    
-                    Link(destination: URL(string: NSLocalizedString("https://apps.apple.com/us/app/whisper-notes/id6447090616?platform=iphone", comment: "Queryable app URL"))!, label: {
-                        
+                    Link(destination: URL(string: NSLocalizedString("https://apps.apple.com/us/app/whisper-notes/id6447090616?platform=iphone", comment: "Whisper Notes app URL"))!, label: {
                         HStack {
                             Image("WhisperNotes")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 40, height: 40)
+                                .clipShape(RoundedRectangle(cornerRadius: 9))
                             Text(NSLocalizedString("Whisper Notes: Text to Speech", comment: "Whisper Notes app name"))
-                        }
-                    })
-                    .foregroundColor(Color.primary)
-                    
-                    Link(destination: URL(string: NSLocalizedString("https://apps.apple.com/us/app/id1668297986?platform=iphone", comment: "Queryable app URL"))!, label: {
-                        
-                        HStack {
-                            Image("MemeSearch")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 40, height: 40)
-                            Text(NSLocalizedString("MemeSearch: Reddit Meme Finder", comment: "MemeSearch app name"))
                         }
                     })
                     .foregroundColor(Color.primary)
