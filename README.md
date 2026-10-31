@@ -1,14 +1,14 @@
 # Queryable
 
-<a href="https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone">
-    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/6824141/252914927-51414112-236b-4f7a-a13b-5210f9203198.svg" alt="download-on-the-app-store">
+The open-source code of **Queryable**, an offline photo search app for iPhone and iPad (iOS 18 or later). Describe a photo in your own words, such as `a brown dog sitting on a bench`, and Apple's [MobileCLIP](https://github.com/apple/ml-mobileclip) model finds it on the device. Your photos are never uploaded.
+
+<a href="https://apps.apple.com/app/apple-store/id1661598353?pt=128849838&ct=github-readme&mt=8">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/6824141/252914927-51414112-236b-4f7a-a13b-5210f9203198.svg" alt="Download on the App Store">
 </a>
 
-[![Queryable](https://mazzzystar.com/images/2022-12-28/Queryable-search-result.jpg)](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone)
+[![Queryable](https://mazzzystar.com/images/2022-12-28/Queryable-search-result.jpg)](https://apps.apple.com/app/apple-store/id1661598353?pt=128849838&ct=github-readme&mt=8)
 
-The open-source code of Queryable, an iOS app, leverages the ~~OpenAI's [CLIP](https://github.com/openai/CLIP)~~ Apple's [MobileCLIP](https://github.com/apple/ml-mobileclip) model to conduct offline searches in the 'Photos' album. Unlike the category-based search model built into the iOS Photos app, Queryable allows you to use natural language statements, such as `a brown dog sitting on a bench`, to search your album. Since it's offline, your album privacy won't be compromised by any company, including Apple or Google.
-
-[Blog](https://mazzzystar.com/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [App Store](https://apps.apple.com/us/app/queryable-find-photo-by-text/id1661598353?platform=iphone) | [Website](https://queryable.app/) | [Story](https://mazzzystar.com/2024/07/21/Two-Years-of-an-AI-Photo-Album-Search-App/) | [故事](https://mazzzystar.com/2024/07/21/Two-Years-of-an-AI-Photo-Album-Search-App-zh/)
+[Blog](https://mazzzystar.com/2022/12/29/Run-CLIP-on-iPhone-to-Search-Photos/) | [App Store](https://apps.apple.com/app/apple-store/id1661598353?pt=128849838&ct=github-readme&mt=8) | [Website](https://queryable.app/) | [Story](https://mazzzystar.com/2024/07/21/Two-Years-of-an-AI-Photo-Album-Search-App/) | [故事](https://mazzzystar.com/2024/07/21/Two-Years-of-an-AI-Photo-Album-Search-App-zh/)
 
 ## How does it work?
 
